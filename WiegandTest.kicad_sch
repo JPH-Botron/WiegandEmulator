@@ -1,0 +1,991 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "0aeccc43-ea71-43b6-bfe2-e1aae0f9728d")
+	(paper "A4")
+	(title_block
+		(date "2025-11-03")
+		(rev "A")
+		(comment 1 "JPH")
+	)
+	(lib_symbols
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 109.22 106.68) (xy 119.38 106.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e98bd79-1036-4fbf-8c47-c008acc88fbd")
+	)
+	(wire
+		(pts
+			(xy 109.22 101.6) (xy 119.38 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b9d53a5-65d9-422a-9296-24fec5e33aed")
+	)
+	(wire
+		(pts
+			(xy 119.38 48.26) (xy 109.22 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4ca1ba0e-d039-4412-864c-88a3a854ab6b")
+	)
+	(wire
+		(pts
+			(xy 109.22 73.66) (xy 119.38 73.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55b1ca20-3680-4365-bab1-cb6ba7c06d07")
+	)
+	(wire
+		(pts
+			(xy 109.22 78.74) (xy 119.38 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72b77444-b59e-46b0-af36-55d5bc37b01b")
+	)
+	(wire
+		(pts
+			(xy 119.38 109.22) (xy 109.22 109.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7449a34c-ef56-4628-a912-10a19c68aaf7")
+	)
+	(wire
+		(pts
+			(xy 109.22 45.72) (xy 119.38 45.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "792861a5-7f69-4b10-90db-3e0a7bf55531")
+	)
+	(wire
+		(pts
+			(xy 119.38 53.34) (xy 109.22 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b3b7e20-424a-4b30-99d7-67a98afd09fa")
+	)
+	(wire
+		(pts
+			(xy 119.38 104.14) (xy 109.22 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac008156-c6e0-4c8c-9273-109fb0790290")
+	)
+	(wire
+		(pts
+			(xy 109.22 83.82) (xy 119.38 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c39cfedf-016e-41f8-9215-b527dfcbeb41")
+	)
+	(wire
+		(pts
+			(xy 109.22 55.88) (xy 119.38 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8c071f4-a772-41f2-94c8-0ab5997be39b")
+	)
+	(wire
+		(pts
+			(xy 109.22 111.76) (xy 119.38 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dd1563a8-4e3d-408f-83c5-fddaa21bb097")
+	)
+	(wire
+		(pts
+			(xy 109.22 50.8) (xy 119.38 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dfcf4082-b95c-4680-be07-09c9dc1d36c1")
+	)
+	(wire
+		(pts
+			(xy 119.38 76.2) (xy 109.22 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee746bab-8e97-47d3-8822-680625f0bfef")
+	)
+	(wire
+		(pts
+			(xy 119.38 81.28) (xy 109.22 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f6f0fbea-a830-4a9c-9349-83377f991507")
+	)
+	(text "Revision A  11/3/2025               Initial Revision"
+		(exclude_from_sim no)
+		(at 222.758 23.368 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "41acdb24-7f6e-4f3d-8e55-b7854e247703")
+	)
+	(text "Revision History"
+		(exclude_from_sim no)
+		(at 222.504 18.034 0)
+		(effects
+			(font
+				(size 2 2)
+			)
+		)
+		(uuid "9380361a-08dd-4b3e-86ba-36c3ebbe1a04")
+	)
+	(text "CPU"
+		(exclude_from_sim no)
+		(at 82.042 75.438 0)
+		(effects
+			(font
+				(size 5 5)
+				(thickness 1)
+				(bold yes)
+			)
+		)
+		(uuid "a7312a36-9c99-440d-9739-819a124b3697")
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 25.4 187.96 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "14013679-ac2f-412c-acef-d6129095192c")
+		(property "Reference" "H4"
+			(at 27.94 186.6899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 27.94 189.2299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 25.4 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 25.4 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "WiegandTest"
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(reference "H4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 25.4 180.34 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "98d311d9-b543-42fa-b513-89e596f8854f")
+		(property "Reference" "H3"
+			(at 27.94 179.0699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 27.94 181.6099 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 25.4 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 25.4 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "WiegandTest"
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 25.4 172.72 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b621ae05-d8e5-4022-a289-05d4d5dd7fb0")
+		(property "Reference" "H2"
+			(at 27.94 171.4499 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 27.94 173.9899 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 25.4 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 25.4 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project "WiegandTest"
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 25.4 165.1 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d0a96030-bf0e-49eb-b606-37ca9e442eca")
+		(property "Reference" "H1"
+			(at 27.94 163.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 27.94 166.3699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3"
+			(at 25.4 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 25.4 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 25.4 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet
+		(at 62.23 41.91)
+		(size 46.99 76.2)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "0fa10a4a-13bc-4610-be7f-46687659fbaa")
+		(property "Sheetname" "CPU"
+			(at 62.23 41.1984 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "CPU.kiicad_sch.kicad_sch"
+			(at 62.23 118.6946 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "DC0_RX" input
+			(at 109.22 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "e0cdcba0-0fb7-43ec-9ffe-3b8519bad31a")
+		)
+		(pin "DC1_RX" input
+			(at 109.22 104.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "9cb4a98f-3c43-4742-aa07-ce4b1c79487f")
+		)
+		(pin "{slash}DC1_TX" output
+			(at 109.22 109.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "6d072b5b-865a-432b-ab84-5ce2b5a6bb0d")
+		)
+		(pin "{slash}DC0_TX" output
+			(at 109.22 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "41dc2101-5350-46e8-aad1-cdd437a8dbb8")
+		)
+		(pin "C_PULLUP_EN" output
+			(at 109.22 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "1f9676c2-4b70-4a63-89aa-d531bf60b30b")
+		)
+		(pin "{slash}DA0_TX" output
+			(at 109.22 50.8 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "dcf24318-9464-4e5d-afe9-b36ff07d446d")
+		)
+		(pin "{slash}DA1_TX" output
+			(at 109.22 53.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "01c5318d-d57e-48ed-99fd-25d4fd97814b")
+		)
+		(pin "DA0_RX" input
+			(at 109.22 45.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "fcc9e5b2-e4f2-4c23-8c40-744c1d7b946b")
+		)
+		(pin "DA1_RX" input
+			(at 109.22 48.26 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "087f53a7-a5b1-4e29-9b71-2c656a86987a")
+		)
+		(pin "A_PULLUP_EN" output
+			(at 109.22 55.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "0f2ee835-f2b6-455a-b841-c82c862e652a")
+		)
+		(pin "{slash}DB0_TX" output
+			(at 109.22 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "1c7460a0-7c88-4bc6-b863-33d3669a651b")
+		)
+		(pin "{slash}DB1_TX" output
+			(at 109.22 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "eefe848a-64c6-44f9-8fbc-949f490706d1")
+		)
+		(pin "B_PULLUP_EN" output
+			(at 109.22 83.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "d67a9e51-225c-4dfe-a6ba-1c823057db9a")
+		)
+		(pin "DB1_RX" input
+			(at 109.22 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "df576e0d-ad86-474e-aba1-b3a6856e9e52")
+		)
+		(pin "DB0_RX" input
+			(at 109.22 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+			(uuid "d7c2c946-7666-4b33-8846-6fa3fae06013")
+		)
+		(instances
+			(project "WiegandTest"
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 119.38 68.58)
+		(size 22.86 19.05)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "86ccccb7-90dc-485a-a602-ad60cc7a093a")
+		(property "Sheetname" "Channel 2"
+			(at 119.38 67.8684 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Channels.kicad_sch"
+			(at 119.38 88.2146 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "{slash}D0_TX" input
+			(at 119.38 78.74 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "c8d031bb-6a08-47f2-82ff-1d4127f4d390")
+		)
+		(pin "D1_RX" output
+			(at 119.38 76.2 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "730b3954-6152-4f1c-932d-0c9b3a202df4")
+		)
+		(pin "{slash}D1_TX" input
+			(at 119.38 81.28 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "a1eef55a-947f-46e2-82bc-f1e3ca7b0ad6")
+		)
+		(pin "D0_RX" output
+			(at 119.38 73.66 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "2d126628-a523-47f5-b52e-6e1ce581cdcb")
+		)
+		(pin "PULLUP_EN" input
+			(at 119.38 83.82 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "498d19bf-54e7-4666-800e-12dcbf6babc3")
+		)
+		(instances
+			(project "WiegandTest"
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 119.38 40.64)
+		(size 22.86 19.05)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "9a734fd7-e5c3-43e5-a72d-1d275c512da8")
+		(property "Sheetname" "Channel 1"
+			(at 119.38 39.9284 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Channels.kicad_sch"
+			(at 119.38 60.2746 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "{slash}D1_TX" output
+			(at 119.38 53.34 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "0a2feead-5cbe-4e54-80be-ab9003988fe5")
+		)
+		(pin "{slash}D0_TX" output
+			(at 119.38 50.8 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "35c7f905-e254-414b-9008-b0e36f6e2c69")
+		)
+		(pin "D1_RX" output
+			(at 119.38 48.26 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "8b7bdf80-db8e-471b-b931-fcfacec0bce0")
+		)
+		(pin "D0_RX" output
+			(at 119.38 45.72 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "cf27395e-a860-45c8-9b98-1d3defe1a43e")
+		)
+		(pin "PULLUP_EN" input
+			(at 119.38 55.88 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "802d623c-d2da-46aa-a3b5-88d8b64a1fe2")
+		)
+		(instances
+			(project "WiegandTest"
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(page "6")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 119.38 96.52)
+		(size 22.86 20.32)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "e04a91f8-dc5a-4f50-b3ea-99a97a1e543e")
+		(property "Sheetname" "Channel 3"
+			(at 119.38 95.8084 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Channels.kicad_sch"
+			(at 119.38 117.4246 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "{slash}D0_TX" input
+			(at 119.38 106.68 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "daa02a16-52f9-4f05-b4d1-e03d1ff3ac2c")
+		)
+		(pin "D1_RX" output
+			(at 119.38 104.14 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "9d415cf3-5feb-44e7-be34-eefa36615b41")
+		)
+		(pin "{slash}D1_TX" input
+			(at 119.38 109.22 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "5dfea60b-d3b1-4225-bb39-308beb857824")
+		)
+		(pin "D0_RX" output
+			(at 119.38 101.6 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "f4cf0f05-8e3d-437c-8ab4-756d5be52d91")
+		)
+		(pin "PULLUP_EN" input
+			(at 119.38 111.76 180)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+			(uuid "f3fd4fad-c17f-47f2-8cbb-3b57af2b03c7")
+		)
+		(instances
+			(project "WiegandTest"
+				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
+					(page "4")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)
