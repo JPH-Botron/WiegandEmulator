@@ -179,7 +179,9 @@
       ],
       "track_widths": [
         0.0,
-        0.381
+        0.381,
+        0.635,
+        1.27
       ],
       "tuning_pattern_settings": {
         "diff_pair_defaults": {
@@ -657,7 +659,7 @@
     ],
     [
       "86ccccb7-90dc-485a-a602-ad60cc7a093a",
-      "Channel 2"
+      "Channel 1"
     ],
     [
       "0fa10a4a-13bc-4610-be7f-46687659fbaa",
@@ -665,11 +667,11 @@
     ],
     [
       "e04a91f8-dc5a-4f50-b3ea-99a97a1e543e",
-      "Channel 3"
+      "Channel 2"
     ],
     [
       "9a734fd7-e5c3-43e5-a72d-1d275c512da8",
-      "Channel 1"
+      "Channel 3"
     ]
   ],
   "text_variables": {}
