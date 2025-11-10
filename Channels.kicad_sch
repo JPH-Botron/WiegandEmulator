@@ -3165,7 +3165,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x05, script generated"
+		(property "Description" "Connector Header Through Hole, Right Angle 5 position 0.100\" (2.54mm)"
+			(at 59.69 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Adam Tech"
+			(at 59.69 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "PH1RB-05-UA"
 			(at 59.69 78.74 0)
 			(effects
 				(font
@@ -3249,7 +3267,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 170.18 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 170.18 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 170.18 99.06 0)
 			(effects
 				(font
@@ -3324,7 +3360,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Dual diode, anode/center/cathode"
+		(property "Description" "Diode Array 1 Pair Series Connection 200 V 400mA Surface Mount TO-236-3, SC-59, SOT-23-3"
 			(at 107.95 106.68 0)
 			(effects
 				(font
@@ -3343,6 +3379,15 @@
 			)
 		)
 		(property "MPN" "BAV23S"
+			(at 107.95 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Shenzhen Slkormicro Semicon"
 			(at 107.95 106.68 0)
 			(effects
 				(font
@@ -3494,7 +3539,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Dual diode, anode/center/cathode"
+		(property "Description" "Diode Array 1 Pair Series Connection 200 V 400mA Surface Mount TO-236-3, SC-59, SOT-23-3"
 			(at 90.17 99.06 0)
 			(effects
 				(font
@@ -3513,6 +3558,15 @@
 			)
 		)
 		(property "MPN" "BAV23S"
+			(at 90.17 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Shenzhen Slkormicro Semicon"
 			(at 90.17 99.06 0)
 			(effects
 				(font
@@ -3664,7 +3718,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Dual diode, anode/center/cathode"
+		(property "Description" "Diode Array 1 Pair Series Connection 200 V 400mA Surface Mount TO-236-3, SC-59, SOT-23-3"
 			(at 196.85 106.68 0)
 			(effects
 				(font
@@ -3683,6 +3737,15 @@
 			)
 		)
 		(property "MPN" "BAV23S"
+			(at 196.85 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Shenzhen Slkormicro Semicon"
 			(at 196.85 106.68 0)
 			(effects
 				(font
@@ -3760,7 +3823,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "10 Ohms ±5% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film"
+			(at 82.55 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 82.55 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603JR-1310RL "
 			(at 82.55 101.6 0)
 			(effects
 				(font
@@ -3910,7 +3991,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "49.9 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film"
+			(at 114.3 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 114.3 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-1349K9L"
 			(at 114.3 115.57 0)
 			(effects
 				(font
@@ -3986,7 +4085,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "schottky barrier diode"
+		(property "Description" "30V 1 PAIR COMMON ANODE 1V@100MA"
+			(at 140.97 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Shenzhen Slkormicro Semicon"
+			(at 140.97 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "BAT54A"
 			(at 140.97 86.36 0)
 			(effects
 				(font
@@ -4064,7 +4181,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 199.39 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 199.39 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 199.39 118.11 0)
 			(effects
 				(font
@@ -4141,7 +4276,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "49.9 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film"
+			(at 119.38 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 119.38 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-1349K9L"
 			(at 119.38 115.57 0)
 			(effects
 				(font
@@ -4216,7 +4369,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 205.74 106.68 0)
 			(effects
 				(font
@@ -4292,7 +4463,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Light emitting diode"
+		(property "Description" "Green 571nm LED Indication - Discrete 2V 0603 (1608 Metric)"
+			(at 213.36 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Lite-On"
+			(at 213.36 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LTST-C191KGKT"
 			(at 213.36 133.35 0)
 			(effects
 				(font
@@ -4368,7 +4557,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 205.74 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 205.74 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 205.74 133.35 0)
 			(effects
 				(font
@@ -4449,7 +4656,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"
+		(property "Description" "N-Channel 60 V 115mA (Ta) 200mW (Ta) Surface Mount SOT-23-3"
+			(at 137.16 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Onsemi"
+			(at 137.16 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2N7002"
 			(at 137.16 118.11 0)
 			(effects
 				(font
@@ -4530,7 +4755,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Zener diode"
+		(property "Description" "Zener Diode 15 V 3 W ±5% Surface Mount SMB"
 			(at 100.33 90.17 0)
 			(effects
 				(font
@@ -4540,6 +4765,15 @@
 			)
 		)
 		(property "MPN" "1SMB5929BT3G"
+			(at 100.33 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Onsemi"
 			(at 100.33 90.17 0)
 			(effects
 				(font
@@ -4616,7 +4850,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "499 Ohms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film"
+			(at 149.86 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 149.86 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-07499RL"
 			(at 149.86 93.98 0)
 			(effects
 				(font
@@ -4698,7 +4950,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "0.115A Id, 60V Vds, N-Channel MOSFET, SOT-23"
+		(property "Description" "N-Channel 60 V 115mA (Ta) 200mW (Ta) Surface Mount SOT-23-3"
+			(at 157.48 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Onsemi"
+			(at 157.48 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "2N7002"
 			(at 157.48 118.11 0)
 			(effects
 				(font
@@ -4923,7 +5193,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Dual diode, anode/center/cathode"
+		(property "Description" "Diode Array 1 Pair Series Connection 200 V 400mA Surface Mount TO-236-3, SC-59, SOT-23-3"
 			(at 176.53 99.06 0)
 			(effects
 				(font
@@ -4942,6 +5212,15 @@
 			)
 		)
 		(property "MPN" "BAV23S"
+			(at 176.53 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Shenzhen Slkormicro Semicon"
 			(at 176.53 99.06 0)
 			(effects
 				(font
@@ -5191,7 +5470,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 199.39 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 199.39 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 199.39 120.65 0)
 			(effects
 				(font
@@ -5561,7 +5858,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "10 Ohms ±5% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film"
+			(at 82.55 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 82.55 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603JR-1310RL "
 			(at 82.55 99.06 0)
 			(effects
 				(font
@@ -5636,7 +5951,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 170.18 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 170.18 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 170.18 106.68 0)
 			(effects
 				(font
@@ -5713,7 +6046,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "499 Ohms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film"
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-07499RL"
 			(at 132.08 93.98 0)
 			(effects
 				(font
@@ -5788,7 +6139,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 205.74 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 205.74 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 205.74 99.06 0)
 			(effects
 				(font

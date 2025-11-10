@@ -4394,7 +4394,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "1 µF ±10% 50V Ceramic Capacitor X7R 0805 (2012 Metric)"
+			(at 200.66 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Samsung"
+			(at 200.66 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21B105KBFNNNE"
 			(at 200.66 111.76 0)
 			(effects
 				(font
@@ -4528,7 +4546,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "10 µF ±10% 16V Ceramic Capacitor X5R 0805 (2012 Metric)"
+			(at 187.96 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Samsung"
+			(at 187.96 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21A106KOQNNNE"
 			(at 187.96 111.76 0)
 			(effects
 				(font
@@ -4596,7 +4632,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film"
+			(at 201.93 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "YAGEO"
+			(at 201.93 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "RC0603FR-103K01L"
 			(at 201.93 166.37 0)
 			(effects
 				(font
@@ -5149,7 +5203,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "b3cca2ca-86bd-4f42-9509-1843cd5f121b")
 		(property "Reference" "U1"
@@ -5564,7 +5618,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "1 µF ±10% 50V Ceramic Capacitor X7R 0805 (2012 Metric)"
+			(at 175.26 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Samsung"
+			(at 175.26 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21B105KBFNNNE"
 			(at 175.26 111.76 0)
 			(effects
 				(font
@@ -5633,7 +5705,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "1 µF ±10% 50V Ceramic Capacitor X7R 0805 (2012 Metric)"
+			(at 177.8 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Samsung"
+			(at 177.8 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21B105KBFNNNE"
 			(at 177.8 85.09 0)
 			(effects
 				(font
@@ -5898,7 +5988,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "1 µF ±10% 50V Ceramic Capacitor X7R 0805 (2012 Metric)"
+			(at 187.96 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Samsung"
+			(at 187.96 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CL21B105KBFNNNE"
 			(at 187.96 85.09 0)
 			(effects
 				(font
@@ -5966,7 +6074,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Light emitting diode"
+		(property "Description" "Green 571nm LED Indication - Discrete 2V 0603 (1608 Metric)"
+			(at 201.93 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Lite-On"
+			(at 201.93 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "LTST-C191KGKT"
 			(at 201.93 173.99 0)
 			(effects
 				(font
@@ -6035,7 +6161,25 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x14, script generated"
+		(property "Description" "14 Position Header Connector 0.100\" (2.54mm) Through Hole Gold"
+			(at 242.57 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MFG" "Sullins Connector Solutions"
+			(at 242.57 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "PPPC141LFBN-RC"
 			(at 242.57 81.28 0)
 			(effects
 				(font
