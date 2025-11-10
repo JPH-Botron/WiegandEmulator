@@ -3107,6 +3107,16 @@
 		)
 		(uuid "fd303aed-d0e5-4ce2-bf69-c4e6745c5e11")
 	)
+	(text "RP2040 or RP2350\nCode must be compiled\nfor correct version"
+		(exclude_from_sim no)
+		(at 106.172 130.556 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "13c9cb8a-76f1-4a7f-bafa-8ee45bdf06dd")
+	)
 	(text "GND"
 		(exclude_from_sim no)
 		(at 245.618 96.774 0)
@@ -3142,6 +3152,16 @@
 			)
 		)
 		(uuid "33613bb9-1fe7-44ac-aee3-05eadfc541d8")
+	)
+	(text "Entire board powered \nfrom Pi Pico USB input"
+		(exclude_from_sim no)
+		(at 165.608 54.61 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "477b9119-1cb2-41aa-95b6-85b6fe30e735")
 	)
 	(text "SDO_MISO"
 		(exclude_from_sim no)
@@ -3297,7 +3317,7 @@
 		)
 		(uuid "e256073a-611c-4b80-b760-22fb600ffea9")
 	)
-	(text "Ransanx 2PCS LCD Display \n4.0 Inch 320x480 TN \nCapacitive Touch Screen"
+	(text "Ransanx LCD Display \n4.0 Inch 320x480 TN \nCapacitive Touch Screen"
 		(exclude_from_sim no)
 		(at 243.078 108.204 0)
 		(effects

@@ -2911,6 +2911,16 @@
 		)
 		(uuid "0178c0bd-bf7b-4947-b3b5-56f39d136de0")
 	)
+	(text "Green"
+		(exclude_from_sim no)
+		(at 213.36 127.508 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "0ff99ac0-1fd8-4312-a5b5-d8ba9d8f6785")
+	)
 	(text "Activity"
 		(exclude_from_sim no)
 		(at 213.106 137.668 0)
@@ -2953,6 +2963,26 @@
 		)
 		(uuid "72dc943b-dd46-415d-9220-0ce02fb7a30f")
 	)
+	(text "Protection and 3.3V clamping if\nbus is higher than 3.3V"
+		(exclude_from_sim no)
+		(at 181.356 90.678 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "74b62d31-dc8f-46e7-8aa2-f84b4f94d6bf")
+	)
+	(text "Activity light turns on for 200 mSec\nif this channel receives a message"
+		(exclude_from_sim no)
+		(at 211.582 142.24 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "89314d58-e5d8-41f2-bd50-aa0eebf8ccdc")
+	)
 	(text "D0_TX"
 		(exclude_from_sim no)
 		(at 160.274 97.79 0)
@@ -2965,7 +2995,7 @@
 	)
 	(text "D0"
 		(exclude_from_sim no)
-		(at 53.086 99.06 0)
+		(at 53.086 99.314 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -2973,9 +3003,39 @@
 		)
 		(uuid "acda01c6-56ee-4375-b91d-fa8a15764a46")
 	)
+	(text "Pullup Voltage"
+		(exclude_from_sim no)
+		(at 49.784 104.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "c95ea51c-c33c-4b82-a0bd-9622a5dc98e5")
+	)
+	(text "Light pulldowns to \nanchor floating bus"
+		(exclude_from_sim no)
+		(at 114.554 129.286 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "dea74736-a061-4fa4-90cb-79d4567d92fa")
+	)
+	(text "Primary anti-static \nprotection"
+		(exclude_from_sim no)
+		(at 84.328 111.252 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ef6b7bd1-9aec-449f-9f12-bb7938402381")
+	)
 	(text "D1"
 		(exclude_from_sim no)
-		(at 53.086 101.346 0)
+		(at 53.086 101.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
