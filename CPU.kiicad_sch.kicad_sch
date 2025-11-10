@@ -4441,6 +4441,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C24123"
+			(at 200.66 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "040ec014-fe41-44ee-9e32-ea7f60a52481")
 		)
@@ -4593,6 +4602,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C95841"
+			(at 187.96 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "31fa42ef-007e-4575-894e-fe411985da3b")
 		)
@@ -4671,6 +4689,15 @@
 			)
 		)
 		(property "MPN" "RC0603FR-103K01L"
+			(at 201.93 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C22356559"
 			(at 201.93 166.37 0)
 			(effects
 				(font
@@ -5269,6 +5296,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" ""
+			(at 104.14 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "29"
 			(uuid "3aaaa71c-e9fb-4ebe-9430-bf6e2ca558a2")
 		)
@@ -5665,6 +5701,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C24123"
+			(at 175.26 111.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "4788a611-117f-437b-b08c-015dfa5bfdb5")
 		)
@@ -5744,6 +5789,15 @@
 			)
 		)
 		(property "MPN" "CL21B105KBFNNNE"
+			(at 177.8 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C24123"
 			(at 177.8 85.09 0)
 			(effects
 				(font
@@ -6035,6 +6089,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C24123"
+			(at 187.96 85.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "221fc585-41f1-4bad-a701-8a763311bda5")
 		)
@@ -6058,7 +6121,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f7f7590e-87c2-4667-ab2a-b095d5986e7c")
 		(property "Reference" "D9"
 			(at 205.486 176.784 0)
@@ -6121,6 +6184,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "N/A"
+			(at 201.93 173.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "23d520da-9307-4dd9-9eb1-e247c298d4b6")
 		)
@@ -6143,7 +6215,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "f91c5d46-a218-4e7d-b074-d414f69755ea")
 		(property "Reference" "J4"
 			(at 231.902 62.738 0)
@@ -6200,6 +6272,15 @@
 			)
 		)
 		(property "MPN" "PPPC141LFBN-RC"
+			(at 242.57 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "N/A"
 			(at 242.57 81.28 0)
 			(effects
 				(font

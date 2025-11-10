@@ -3188,7 +3188,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "067878af-d4a1-4f77-a9f4-90f61e67fcc4")
 		(property "Reference" "J1"
@@ -3244,6 +3244,15 @@
 			)
 		)
 		(property "MPN" "PH1RB-05-UA"
+			(at 59.69 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "N/A"
 			(at 59.69 78.74 0)
 			(effects
 				(font
@@ -3354,6 +3363,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C22356559"
+			(at 170.18 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "acb9e5f0-0b81-4f97-b4b6-37cc21f378ca")
 		)
@@ -3448,6 +3466,15 @@
 			)
 		)
 		(property "MFG" "Shenzhen Slkormicro Semicon"
+			(at 107.95 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C44345"
 			(at 107.95 106.68 0)
 			(effects
 				(font
@@ -3635,6 +3662,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C44345"
+			(at 90.17 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "86bc36ca-16bb-459b-83e2-f9d36c4b8f3d")
 		)
@@ -3814,6 +3850,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C44345"
+			(at 196.85 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "97310c86-2947-4a27-9436-c49b5472a6cb")
 		)
@@ -3902,6 +3947,15 @@
 			)
 		)
 		(property "MPN" "RC0603JR-1310RL "
+			(at 82.55 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C177346"
 			(at 82.55 101.6 0)
 			(effects
 				(font
@@ -4078,6 +4132,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C22356488"
+			(at 114.3 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "fd810734-ed63-46a5-adb0-e5a756713341")
 		)
@@ -4164,6 +4227,15 @@
 			)
 		)
 		(property "MPN" "BAT54A"
+			(at 140.97 86.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C8591"
 			(at 140.97 86.36 0)
 			(effects
 				(font
@@ -4268,6 +4340,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C22356559"
+			(at 199.39 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "3c37e5a0-422f-4f86-acba-3af4e10b1d5e")
 		)
@@ -4355,6 +4436,15 @@
 			)
 		)
 		(property "MPN" "RC0603FR-1349K9L"
+			(at 119.38 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C22356488"
 			(at 119.38 115.57 0)
 			(effects
 				(font
@@ -4456,6 +4546,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C22356559"
+			(at 205.74 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f6449420-1c2a-44ad-b0e0-fdceb4aa7829")
 		)
@@ -4487,7 +4586,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "62bed6e5-5b84-4eb1-b849-edd00a8583ea")
 		(property "Reference" "D7"
 			(at 215.392 129.54 0)
@@ -4542,6 +4641,15 @@
 			)
 		)
 		(property "MPN" "LTST-C191KGKT"
+			(at 213.36 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "N/A"
 			(at 213.36 133.35 0)
 			(effects
 				(font
@@ -4636,6 +4744,15 @@
 			)
 		)
 		(property "MPN" "RC0603FR-103K01L"
+			(at 205.74 133.35 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C22356559"
 			(at 205.74 133.35 0)
 			(effects
 				(font
@@ -4743,6 +4860,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C16338"
+			(at 137.16 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "22807f49-604f-4879-ae85-8152a5db9895")
 		)
@@ -4834,6 +4960,15 @@
 			)
 		)
 		(property "MFG" "Onsemi"
+			(at 100.33 90.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C460772"
 			(at 100.33 90.17 0)
 			(effects
 				(font
@@ -4937,6 +5072,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C23065"
+			(at 149.86 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "f1fbf812-cce2-4e5b-9c80-97b19b097c8e")
 		)
@@ -5029,6 +5173,15 @@
 			)
 		)
 		(property "MPN" "2N7002"
+			(at 157.48 118.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C16338"
 			(at 157.48 118.11 0)
 			(effects
 				(font
@@ -5289,6 +5442,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C44345"
+			(at 176.53 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "7cf2a142-e288-4392-8e21-f9192939cd4f")
 		)
@@ -5395,7 +5557,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "b57e077b-d66e-40c2-b13c-673abb1de323")
 		(property "Reference" "J3"
 			(at 59.055 91.44 0)
@@ -5450,6 +5612,15 @@
 			)
 		)
 		(property "MPN" "1881464"
+			(at 58.42 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "N/A"
 			(at 58.42 99.06 0)
 			(effects
 				(font
@@ -5549,6 +5720,15 @@
 			)
 		)
 		(property "MPN" "RC0603FR-103K01L"
+			(at 199.39 120.65 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C22356559"
 			(at 199.39 120.65 0)
 			(effects
 				(font
@@ -5945,6 +6125,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C177346"
+			(at 82.55 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "503acd3c-9e84-49d4-9027-11de0ca5692c")
 		)
@@ -6030,6 +6219,15 @@
 			)
 		)
 		(property "MPN" "RC0603FR-103K01L"
+			(at 170.18 106.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C22356559"
 			(at 170.18 106.68 0)
 			(effects
 				(font
@@ -6133,6 +6331,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" "C23065"
+			(at 132.08 93.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "2"
 			(uuid "06acd25c-5bb8-489b-80b8-d1d2140906be")
 		)
@@ -6218,6 +6425,15 @@
 			)
 		)
 		(property "MPN" "RC0603FR-103K01L"
+			(at 205.74 99.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" "C22356559"
 			(at 205.74 99.06 0)
 			(effects
 				(font

@@ -528,6 +528,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" ""
+			(at 76.2 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project "WiegandTest"
 				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
@@ -592,6 +601,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" ""
+			(at 76.2 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project "WiegandTest"
 				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
@@ -648,6 +666,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
+			(at 25.4 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" ""
 			(at 25.4 187.96 0)
 			(effects
 				(font
@@ -785,6 +812,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" ""
+			(at 110.49 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(pin "1"
 			(uuid "adfe505b-5a6e-4481-ac0f-7ed7ff83d25d")
 		)
@@ -844,6 +880,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
+			(at 25.4 180.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" ""
 			(at 25.4 180.34 0)
 			(effects
 				(font
@@ -916,6 +961,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" ""
+			(at 25.4 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project "WiegandTest"
 				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
@@ -972,6 +1026,15 @@
 			)
 		)
 		(property "Description" "test point"
+			(at 130.81 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" ""
 			(at 130.81 165.1 0)
 			(effects
 				(font
@@ -1047,6 +1110,15 @@
 				(hide yes)
 			)
 		)
+		(property "JLCPCB Part Number" ""
+			(at 25.4 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(instances
 			(project ""
 				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
@@ -1103,6 +1175,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
+			(at 76.2 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" ""
 			(at 76.2 171.45 0)
 			(effects
 				(font
@@ -1232,6 +1313,15 @@
 			)
 		)
 		(property "Description" "Mounting Hole without connection"
+			(at 76.2 179.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "JLCPCB Part Number" ""
 			(at 76.2 179.07 0)
 			(effects
 				(font

@@ -1,0 +1,6 @@
+Ref,Val,Package,PosX,PosY,Rot,Side
+"D7","LED","LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder",173.786800,-62.915800,90.000000,bottom
+"D9","LED","LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder",84.099400,-128.588800,90.000000,bottom
+"D23","LED","LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder",138.323000,-62.935000,90.000000,bottom
+"D24","LED","LED_0603_1608Metric_Pad1.05x0.95mm_HandSolder",102.819200,-62.966600,90.000000,bottom
+"J4","Display","displayoutline",181.577000,-61.386400,180.000000,bottom

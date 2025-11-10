@@ -1,0 +1,11 @@
+Comment,Designator,Footprint,JLCPCB Part #
+1 µF ±10% 50V Ceramic Capacitor X7R 0805 (2012 Metric),"C1,C2,C4,C6",Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder,C24123
+10 µF ±10% 16V Ceramic Capacitor X5R 0805 (2012 Metric),C3,Capacitor_SMD:C_0805_2012Metric_Pad1.18x1.45mm_HandSolder,C95841
+30V 1 PAIR COMMON ANODE 1V@100MA,"D1,D11,D17",Package_TO_SOT_SMD:SOT-23,C8591
+Zener Diode 15 V 3 W ±5% Surface Mount SMB,"D2,D12,D18",Diode_SMD:D_SMB,C460772
+"Diode Array 1 Pair Series Connection 200 V 400mA Surface Mount TO-236-3, SC-59, SOT-23-3","D3,D4,D5,D6,D13,D14,D15,D16,D19,D20,D21,D22",Package_TO_SOT_SMD:SOT-23,C44345
+N-Channel 60 V 115mA (Ta) 200mW (Ta) Surface Mount SOT-23-3,"Q1,Q2,Q4,Q5,Q6,Q7",Package_TO_SOT_SMD:SOT-23,C16338
+"499 Ohms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film","R1,R2,R17,R18,R29,R30",Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,C23065
+"10 Ohms ±5% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film","R3,R6,R19,R22,R31,R34",Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,C177346
+"3.01 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Thick Film","R4,R5,R7,R8,R11,R12,R13,R14,R20,R21,R23,R24,R27,R28,R32,R33,R35,R36,R39,R40,R41,R42",Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,C22356559
+"49.9 kOhms ±1% 0.1W, 1/10W Chip Resistor 0603 (1608 Metric) Moisture Resistant Thick Film","R9,R10,R25,R26,R37,R38",Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,C22356488
