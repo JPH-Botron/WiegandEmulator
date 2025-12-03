@@ -11,25 +11,26 @@
 #define TERMINAL_MAX_CHARS 64
 #endif
 
-struct TerminalConfig {
-  TFT_eSPI* display;
-  uint16_t x;
-  uint16_t y;
-  uint16_t width;
-  uint16_t height;
-  uint16_t foreground;
-  uint16_t background;
-  uint8_t textSize;
+struct TerminalConfig
+{
+    TFT_eSPI *display;
+    uint16_t x;
+    uint16_t y;
+    uint16_t width;
+    uint16_t height;
+    uint16_t foreground;
+    uint16_t background;
+    uint8_t textSize;
 };
 
 // Initialize the terminal window inside the configured screen region.
-void terminalInit(const TerminalConfig& config);
+void terminalInit(const TerminalConfig &config);
 
 // Append a new line of text to the terminal window.
-void terminalAddLine(const char* message);
+void terminalAddLine(const char *message);
 
 // Optional printf-style helper for formatted text.
-void terminalPrintf(const char* fmt, ...);
+void terminalPrintf(const char *fmt, ...);
 
 // Force a redraw of the terminal contents (e.g., after screen clear).
 void terminalRedraw();
