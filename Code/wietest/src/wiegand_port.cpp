@@ -92,19 +92,13 @@ bool WiegandPort::process(uint32_t quiet_ms)
         return false;
     }
 
-    // Snapshot buffer under interrupt lock, then print.
-    uint32_t local_count = 0;
-    uint32_t local_buffer[kBufferCapacity];
-    noInterrupts();
-    local_count = count_;
-    for (uint32_t i = 0; i < local_count; ++i)
+    // Snapshot count so we only process the records that were present on entry.
+    uint32_t local_count = count_;
+    if (local_count > kBufferCapacity)
     {
-        local_buffer[i] = buffer_[i];
+        local_count = kBufferCapacity;
     }
-    interrupts();
 
-    Serial.print("Message complete on port ");
-    Serial.println(port_id_);
     uint32_t prev_ts = 0;
     uint32_t prev_levels = 0x3; // assume idle high on both lines
     uint32_t last_fall_ts[2] = {0, 0};
@@ -113,33 +107,27 @@ bool WiegandPort::process(uint32_t quiet_ms)
     uint32_t max_low[2] = {0, 0};
     uint64_t sum_low[2] = {0, 0};
     uint32_t count_low[2] = {0, 0};
+    uint32_t min_low_any = UINT32_MAX;
+    uint32_t max_low_any = 0;
+    uint64_t sum_low_any = 0;
+    uint32_t count_low_any = 0;
+    uint32_t min_inter = UINT32_MAX;
+    uint32_t max_inter = 0;
+    uint64_t sum_inter = 0;
+    uint32_t count_inter = 0;
+    uint32_t last_rise_ts_any = 0;
+    bool have_last_rise = false;
     const uint32_t wrap = (1u << 30);
     uint8_t bits[64] = {0}; // up to 512 bits
     uint32_t bit_count = 0;
 
     for (uint32_t i = 0; i < local_count; ++i)
     {
-        const uint32_t word = local_buffer[i];
+        const uint32_t word = buffer_[i];
         const uint32_t ts = word >> 2;
         const uint32_t levels = word & 0x3;
         const uint32_t d0 = levels & 0x1;
         const uint32_t d1 = (levels >> 1) & 0x1;
-        Serial.print(ts);
-        if (i == 0)
-        {
-            Serial.print(" +0");
-        }
-        else
-        {
-            // Down-counter delta: previous minus current, with wrap on 30 bits.
-            const uint32_t delta = (prev_ts >= ts) ? (prev_ts - ts) : (prev_ts + wrap - ts);
-            Serial.print(" +");
-            Serial.print(delta);
-        }
-        Serial.print(" ");
-        Serial.print(d0);
-        Serial.print(" ");
-        Serial.println(d1);
         prev_ts = ts;
 
         // Track low pulse durations per line.
@@ -151,6 +139,22 @@ bool WiegandPort::process(uint32_t quiet_ms)
             if (was_high && !now_high)
             {
                 // Falling edge: start of low pulse.
+                if (have_last_rise)
+                {
+                    const uint32_t inter = (last_rise_ts_any >= ts)
+                                               ? (last_rise_ts_any - ts)
+                                               : (last_rise_ts_any + wrap - ts);
+                    if (inter < min_inter)
+                    {
+                        min_inter = inter;
+                    }
+                    if (inter > max_inter)
+                    {
+                        max_inter = inter;
+                    }
+                    sum_inter += inter;
+                    count_inter += 1;
+                }
                 last_fall_ts[line] = ts;
                 in_low[line] = true;
             }
@@ -170,6 +174,16 @@ bool WiegandPort::process(uint32_t quiet_ms)
                 }
                 sum_low[line] += pulse;
                 count_low[line] += 1;
+                if (pulse < min_low_any)
+                {
+                    min_low_any = pulse;
+                }
+                if (pulse > max_low_any)
+                {
+                    max_low_any = pulse;
+                }
+                sum_low_any += pulse;
+                count_low_any += 1;
                 in_low[line] = false;
 
                 // Record bit: D0 pulse -> 0, D1 pulse -> 1
@@ -181,32 +195,41 @@ bool WiegandPort::process(uint32_t quiet_ms)
                     }
                     bit_count++;
                 }
+                last_rise_ts_any = ts;
+                have_last_rise = true;
             }
         }
         prev_levels = levels;
     }
 
-    for (int line = 0; line < 2; ++line)
-    {
-        const char *name = (line == 0) ? "D0" : "D1";
-        if (count_low[line] == 0)
-        {
-            Serial.print(name);
-            Serial.println(" low: no pulses");
-            continue;
-        }
-        const uint32_t avg = static_cast<uint32_t>(sum_low[line] / count_low[line]);
-        Serial.print(name);
-        Serial.print(" low min/max/avg: ");
-        Serial.print(min_low[line]);
-        Serial.print("/");
-        Serial.print(max_low[line]);
-        Serial.print("/");
-        Serial.println(avg);
-    }
+    const uint32_t avg_any = (count_low_any > 0)
+                                 ? static_cast<uint32_t>(sum_low_any / count_low_any)
+                                 : 0;
+    const uint32_t avg_inter = (count_inter > 0)
+                                   ? static_cast<uint32_t>(sum_inter / count_inter)
+                                   : 0;
+
+    const char port_letter = static_cast<char>('A' + port_id_);
+    Serial.print(">");
+    Serial.print(port_letter);
+    Serial.print(" ");
+    Serial.print(bit_count);
+    Serial.print("b");
+    Serial.print(" ");
+    Serial.print((count_low_any > 0) ? min_low_any : 0);
+    Serial.print("/");
+    Serial.print(avg_any);
+    Serial.print("/");
+    Serial.print((count_low_any > 0) ? max_low_any : 0);
+    Serial.print(" ");
+    Serial.print((count_inter > 0) ? min_inter : 0);
+    Serial.print("/");
+    Serial.print(avg_inter);
+    Serial.print("/");
+    Serial.println((count_inter > 0) ? max_inter : 0);
 
     // Emit captured bits in hex and bit count.
-    Serial.print("Bits (hex): ");
+    Serial.print("0x");
     const uint32_t byte_len = (bit_count + 7) / 8;
     auto hexchar = [](uint8_t nib) -> char
     {
@@ -218,8 +241,7 @@ bool WiegandPort::process(uint32_t quiet_ms)
         Serial.print(hexchar((b >> 4) & 0xF));
         Serial.print(hexchar(b & 0xF));
     }
-    Serial.print(" bits=");
-    Serial.println(bit_count);
+    Serial.println();
 
     reset_buffer();
     return true;

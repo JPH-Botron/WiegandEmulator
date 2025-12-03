@@ -225,17 +225,17 @@ void setup()
     tft.println(">1 26b 72/100/110  800/1000/1200");
     tft.println("   0x0123456789012345");
 
-    // TerminalConfig terminalConfig;
-    // terminalConfig.display = &tft;
-    // terminalConfig.x = 0;
-    // terminalConfig.y = 40;
-    // terminalConfig.width = tft.width();
-    // terminalConfig.height = tft.height() - terminalConfig.y;
-    // terminalConfig.foreground = TFT_GREEN;
-    // terminalConfig.background = TFT_BLACK;
-    // terminalConfig.textSize = 1;
-    // terminalInit(terminalConfig);
-    // terminalAddLine("Terminal ready");
+    TerminalConfig terminalConfig;
+    terminalConfig.display = &tft;
+    terminalConfig.x = 0;
+    terminalConfig.y = 40;
+    terminalConfig.width = tft.width();
+    terminalConfig.height = tft.height() - terminalConfig.y;
+    terminalConfig.foreground = TFT_GREEN;
+    terminalConfig.background = TFT_BLACK;
+    terminalConfig.textSize = 1;
+    terminalInit(terminalConfig);
+    terminalAddLine("Terminal ready");
 
     // Wire.setSDA(I2C0_SDA);
     // Wire.setSCL(I2C0_SCL);
@@ -265,7 +265,7 @@ void loop()
 
     // static uint32_t lastLog = 0;
     // const uint32_t now = millis();
-    // if (now - lastLog >= 5000) {
+    // if (now - lastLog >= 1000) {
     //     lastLog = now;
     //     terminalPrintf("Uptime %lu ms", static_cast<unsigned long>(now));
     // }
