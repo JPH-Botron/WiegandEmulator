@@ -1,0 +1,60 @@
+; PIO program: two-pin Wiegand edge capture with timestamp (one SM per D0/D1 pair)
+;
+; Format pushed on edge: [31:2] = 30-bit counter snapshot
+;                        [1:0] = 2-bit pin levels (LSB = in_base)
+; Counter ticks once per loop at SM clock/divider rate and wraps naturally.
+;
+; Configure the SM so that:
+;   - in_base = lower of the two Wiegand pins
+;   - IN count = 2 bits where we use `in pins, 2`
+
+.program wiegand_rx2
+.wrap_target
+    ; Initialize counter and previous pin state
+    set x, 0              ; free-running down-counter (will wrap from 0 -> 0xFFFFFFFF)
+    mov isr, null
+    in pins, 2            ; sample initial 2-bit level
+    mov y, isr            ; Y = previous level (2 bits in LSBs)
+
+loop:
+    ; --- Tick the counter once per loop (including 0) ---
+    jmp x--, dec_ok       ; X = X - 1, branch target is the next instruction
+dec_ok:
+    ; X now contains the new counter value (natural 32-bit wrap, including 0)
+
+    ; Snapshot the counter for this iteration
+    mov osr, x  [2]       ; OSR = timestamp snapshot
+
+    ; Read current 2-bit pin level
+    mov isr, null
+    in pins, 2            ; ISR = current 2-bit level (LSBs)
+    mov x, isr            ; X (temp) = current level for compare
+    jmp x!=y, edge        ; if current != previous, we saw an edge
+
+    ; No edge: restore counter and loop
+    mov x, osr            ; X = counter again
+    jmp loop
+
+edge:
+    ; At this point:
+    ;   X = current 2-bit level
+    ;   Y = previous level
+    ;   OSR = timestamp snapshot
+    ;
+    ; Update previous level
+    mov y, x              ; Y = current 2-bit level
+
+    ; Build output word:
+    ;   [31:2] = 30-bit timestamp (low 30 bits of OSR)
+    ;   [1:0] = current 2-bit level (from Y)
+    mov isr, null
+    in osr, 30            ; shift 30 bits of timestamp into ISR
+    in y, 2               ; append 2-bit level -> (timestamp<<2) | level
+
+    irq set 0 rel         ; signal CPU that an edge record is ready
+    push block            ; push 32-bit word to RX FIFO
+
+    ; Restore counter and continue
+    mov x, osr            ; X = counter again
+    jmp loop
+.wrap
