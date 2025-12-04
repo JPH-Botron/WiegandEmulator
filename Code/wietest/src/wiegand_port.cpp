@@ -2,10 +2,12 @@
 
 #include <cstring>
 #include <climits>
+#include <cstdio>
 #include <hardware/gpio.h>
+#include "terminal.h"
 
 WiegandPort::WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uint port_id,
-                         uint tx_pin_d0, uint tx_pin_d1)
+                         uint tx_pin_d0, uint tx_pin_d1, uint led_pin)
     : pio_(pio),
       sm_(sm),
       irq_index_(irq_index),
@@ -13,6 +15,7 @@ WiegandPort::WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uin
       port_id_(port_id),
       tx_pin_d0_(tx_pin_d0),
       tx_pin_d1_(tx_pin_d1),
+      led_pin_(led_pin),
       buffer_{},
       count_(0),
       last_transition_ms_(0),
@@ -23,7 +26,8 @@ WiegandPort::WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uin
       tx_bit_index_(0),
       tx_bit_time_us_(0),
       tx_interbit_time_us_(0),
-      tx_buffer_{} {}
+      tx_buffer_{},
+      led_off_deadline_ms_(0) {}
 
 void WiegandPort::init(uint program_offset, float clk_div)
 {
@@ -36,6 +40,8 @@ void WiegandPort::init(uint program_offset, float clk_div)
     pinMode(tx_pin_d0_, OUTPUT);
     pinMode(tx_pin_d1_, OUTPUT);
     drive_idle();
+    pinMode(led_pin_, OUTPUT);
+    gpio_put(led_pin_, 1); // idle off (low-true)
 }
 
 void WiegandPort::handle_irq()
@@ -210,26 +216,22 @@ bool WiegandPort::process(uint32_t quiet_ms)
                                    : 0;
 
     const char port_letter = static_cast<char>('A' + port_id_);
-    Serial.print(">");
-    Serial.print(port_letter);
-    Serial.print(" ");
-    Serial.print(bit_count);
-    Serial.print("b");
-    Serial.print(" ");
-    Serial.print((count_low_any > 0) ? min_low_any : 0);
-    Serial.print("/");
-    Serial.print(avg_any);
-    Serial.print("/");
-    Serial.print((count_low_any > 0) ? max_low_any : 0);
-    Serial.print(" ");
-    Serial.print((count_inter > 0) ? min_inter : 0);
-    Serial.print("/");
-    Serial.print(avg_inter);
-    Serial.print("/");
-    Serial.println((count_inter > 0) ? max_inter : 0);
+    char summary[96];
+    std::snprintf(summary, sizeof(summary), "rx %c %lub %lu/%lu/%lu %lu/%lu/%lu", port_letter,
+                  static_cast<unsigned long>(bit_count),
+                  static_cast<unsigned long>((count_low_any > 0) ? min_low_any : 0),
+                  static_cast<unsigned long>(avg_any),
+                  static_cast<unsigned long>((count_low_any > 0) ? max_low_any : 0),
+                  static_cast<unsigned long>((count_inter > 0) ? min_inter : 0),
+                  static_cast<unsigned long>(avg_inter),
+                  static_cast<unsigned long>((count_inter > 0) ? max_inter : 0));
+    Serial.println(summary);
 
-    // Emit captured bits in hex and bit count.
-    Serial.print("0x");
+    // Emit captured bits in hex.
+    char hexline[2 * sizeof(bits) + 3]; // "0x" + 2 chars per byte + null
+    size_t pos = 0;
+    hexline[pos++] = '0';
+    hexline[pos++] = 'x';
     const uint32_t byte_len = (bit_count + 7) / 8;
     auto hexchar = [](uint8_t nib) -> char
     {
@@ -238,11 +240,18 @@ bool WiegandPort::process(uint32_t quiet_ms)
     for (uint32_t i = 0; i < byte_len; ++i)
     {
         const uint8_t b = bits[i];
-        Serial.print(hexchar((b >> 4) & 0xF));
-        Serial.print(hexchar(b & 0xF));
+        if (pos + 2 < sizeof(hexline))
+        {
+            hexline[pos++] = hexchar((b >> 4) & 0xF);
+            hexline[pos++] = hexchar(b & 0xF);
+        }
     }
-    Serial.println();
+    hexline[pos] = '\0';
+    Serial.println(hexline);
+    terminalAddLine(summary);
+    terminalAddLine(hexline);
 
+    trigger_led();
     reset_buffer();
     return true;
 }
@@ -351,5 +360,56 @@ bool WiegandPort::transmit(const uint8_t *data, uint32_t bit_count, uint32_t bit
         drive_idle();
         return false;
     }
+    // Log transmit summary and hex to serial and LCD terminal.
+    const char port_letter = static_cast<char>('A' + port_id_);
+    char summary[96];
+    std::snprintf(summary, sizeof(summary), "tx %c %lub %lu %lu", port_letter,
+                  static_cast<unsigned long>(bit_count),
+                  static_cast<unsigned long>(tx_bit_time_us_),
+                  static_cast<unsigned long>(tx_interbit_time_us_));
+
+    const uint32_t byte_len = (bit_count + 7) / 8;
+    const uint32_t tail_bits = bit_count & 7;
+    char hexline[2 * kTxBufferBytes + 3]; // "0x" + 2 chars per byte + null
+    size_t pos = 0;
+    hexline[pos++] = '0';
+    hexline[pos++] = 'x';
+    auto hexchar = [](uint8_t nib) -> char
+    {
+        return (nib < 10) ? static_cast<char>('0' + nib) : static_cast<char>('a' + (nib - 10));
+    };
+    for (uint32_t i = 0; i < byte_len && pos + 2 < sizeof(hexline); ++i)
+    {
+        uint8_t b = tx_buffer_[i];
+        if (i == byte_len - 1 && tail_bits != 0)
+        {
+            const uint8_t mask = static_cast<uint8_t>((1u << tail_bits) - 1u);
+            b &= mask;
+        }
+        hexline[pos++] = hexchar((b >> 4) & 0xF);
+        hexline[pos++] = hexchar(b & 0xF);
+    }
+    hexline[pos] = '\0';
+
+    Serial.println(summary);
+    Serial.println(hexline);
+    terminalAddLine(summary);
+    terminalAddLine(hexline);
+    trigger_led();
     return true;
+}
+
+void WiegandPort::tick()
+{
+    if (led_off_deadline_ms_ != 0 && static_cast<int32_t>(led_off_deadline_ms_ - millis()) <= 0)
+    {
+        gpio_put(led_pin_, 1); // off (low-true)
+        led_off_deadline_ms_ = 0;
+    }
+}
+
+void WiegandPort::trigger_led(uint32_t duration_ms)
+{
+    led_off_deadline_ms_ = millis() + duration_ms;
+    gpio_put(led_pin_, 0); // on (low-true)
 }

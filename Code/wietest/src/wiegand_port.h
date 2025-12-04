@@ -10,7 +10,7 @@ class WiegandPort
 {
 public:
     WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uint port_id, uint tx_pin_d0,
-                uint tx_pin_d1);
+                uint tx_pin_d1, uint led_pin);
 
     void init(uint program_offset, float clk_div);
     void handle_irq();
@@ -18,6 +18,7 @@ public:
     uint32_t buffer_level() const;
     bool message_ready(uint32_t quiet_ms) const;
     bool process(uint32_t quiet_ms);
+    void tick();
     bool transmit(const uint8_t *data, uint32_t bit_count, uint32_t bit_time_us,
                   uint32_t interbit_time_us);
 
@@ -36,6 +37,7 @@ private:
     bool handle_tx_timer();
     void drive_idle();
     void drive_bit(bool bit_is_one);
+    void trigger_led(uint32_t duration_ms = 500);
 
     PIO pio_;
     uint sm_;
@@ -44,6 +46,7 @@ private:
     uint port_id_;
     uint tx_pin_d0_;
     uint tx_pin_d1_;
+    uint led_pin_;
     volatile uint32_t buffer_[kBufferCapacity];
     volatile uint32_t count_;
     volatile uint32_t last_transition_ms_;
@@ -57,4 +60,5 @@ private:
     uint32_t tx_bit_time_us_;
     uint32_t tx_interbit_time_us_;
     uint8_t tx_buffer_[kTxBufferBytes];
+    uint32_t led_off_deadline_ms_;
 };

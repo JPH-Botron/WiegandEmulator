@@ -8,7 +8,9 @@ SerialCommandProcessor::SerialCommandProcessor(Stream &serial)
       commands_(nullptr),
       command_count_(0),
       line_buffer_{},
-      line_len_(0)
+      line_len_(0),
+      last_line_{},
+      have_last_(false)
 {
 }
 
@@ -57,6 +59,16 @@ void SerialCommandProcessor::poll()
             continue;
         }
 
+        // Single '=' immediately triggers replay without requiring newline.
+        if (ch == '=' && line_len_ == 0)
+        {
+            line_buffer_[line_len_++] = '=';
+            line_buffer_[line_len_] = '\0';
+            process_line();
+            reset_buffer();
+            continue;
+        }
+
         // Append character if space remains.
         if (line_len_ < kMaxLineLength - 1)
         {
@@ -72,7 +84,15 @@ void SerialCommandProcessor::poll()
 
 void SerialCommandProcessor::process_line()
 {
-    dispatch(line_buffer_);
+    if (line_buffer_[0] == '=' && have_last_)
+    {
+        replay_last();
+    }
+    else
+    {
+        remember_last(line_buffer_);
+        dispatch(line_buffer_);
+    }
 }
 
 bool SerialCommandProcessor::dispatch(char *line)
@@ -117,4 +137,30 @@ bool SerialCommandProcessor::dispatch(char *line)
 
     serial_.println("ERR unknown command");
     return false;
+}
+
+void SerialCommandProcessor::remember_last(const char *line)
+{
+    if (!line)
+    {
+        have_last_ = false;
+        last_line_[0] = '\0';
+        return;
+    }
+    std::strncpy(last_line_, line, sizeof(last_line_) - 1);
+    last_line_[sizeof(last_line_) - 1] = '\0';
+    have_last_ = true;
+}
+
+bool SerialCommandProcessor::replay_last()
+{
+    if (!have_last_)
+    {
+        return false;
+    }
+    // Copy last_line_ into a temp buffer for tokenization.
+    char temp[kMaxLineLength];
+    std::strncpy(temp, last_line_, sizeof(temp) - 1);
+    temp[sizeof(temp) - 1] = '\0';
+    return dispatch(temp);
 }

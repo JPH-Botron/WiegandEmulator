@@ -25,13 +25,19 @@ constexpr uint8_t PIN_WIEGAND_B_TX_D0 = 9;
 constexpr uint8_t PIN_WIEGAND_B_TX_D1 = 8;
 constexpr uint8_t PIN_WIEGAND_C_TX_D0 = 11;
 constexpr uint8_t PIN_WIEGAND_C_TX_D1 = 14;
+constexpr uint8_t PIN_WIEGAND_A_LED = 0;
+constexpr uint8_t PIN_WIEGAND_B_LED = 5;
+constexpr uint8_t PIN_WIEGAND_C_LED = 15;
 constexpr float WIEGAND_RX_CLKDIV = 15.0f;  // 1:150 with system clock
 constexpr uint32_t WIEGAND_MESSAGE_QUIET_MS = 5;
 
 static WiegandPort g_wiegand_ports[] = {
-    WiegandPort(pio0, 0, 0, PIN_WIEGAND_A_D0, 0, PIN_WIEGAND_A_TX_D0, PIN_WIEGAND_A_TX_D1),
-    WiegandPort(pio0, 1, 1, PIN_WIEGAND_B_D0, 1, PIN_WIEGAND_B_TX_D0, PIN_WIEGAND_B_TX_D1),
-    WiegandPort(pio0, 2, 2, PIN_WIEGAND_C_D0, 2, PIN_WIEGAND_C_TX_D0, PIN_WIEGAND_C_TX_D1),
+    WiegandPort(pio0, 0, 0, PIN_WIEGAND_A_D0, 0, PIN_WIEGAND_A_TX_D0, PIN_WIEGAND_A_TX_D1,
+                PIN_WIEGAND_A_LED),
+    WiegandPort(pio0, 1, 1, PIN_WIEGAND_B_D0, 1, PIN_WIEGAND_B_TX_D0, PIN_WIEGAND_B_TX_D1,
+                PIN_WIEGAND_B_LED),
+    WiegandPort(pio0, 2, 2, PIN_WIEGAND_C_D0, 2, PIN_WIEGAND_C_TX_D0, PIN_WIEGAND_C_TX_D1,
+                PIN_WIEGAND_C_LED),
 };
 
 TFT_eSPI tft;
@@ -185,7 +191,6 @@ bool cmd_tx(int argc, char *argv[])
         return false;
     }
 
-    Serial.println("Done");
     return true;
 }
 
@@ -228,9 +233,9 @@ void setup()
     TerminalConfig terminalConfig;
     terminalConfig.display = &tft;
     terminalConfig.x = 0;
-    terminalConfig.y = 40;
+    terminalConfig.y = 0;
     terminalConfig.width = tft.width();
-    terminalConfig.height = tft.height() - terminalConfig.y;
+    terminalConfig.height = tft.height();
     terminalConfig.foreground = TFT_GREEN;
     terminalConfig.background = TFT_BLACK;
     terminalConfig.textSize = 1;
@@ -282,6 +287,7 @@ void loop()
     for (auto &port : g_wiegand_ports)
     {
         port.process(WIEGAND_MESSAGE_QUIET_MS);
+        port.tick();
     }
     delay(5);
 }

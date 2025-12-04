@@ -26,10 +26,14 @@ private:
     void reset_buffer();
     void process_line();
     bool dispatch(char *line);
+    void remember_last(const char *line);
+    bool replay_last();
 
     Stream &serial_;
     const SerialCommand *commands_;
     size_t command_count_;
     char line_buffer_[kMaxLineLength];
     size_t line_len_;
+    char last_line_[kMaxLineLength];
+    bool have_last_;
 };
