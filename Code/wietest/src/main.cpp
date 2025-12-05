@@ -140,13 +140,13 @@ void loop()
     // }
 
     // Pseudocode—API depends on the chosen touch lib:
-    if (touch.touched())
-    {
-        TS_Point p = touch.getPoint();
-        terminalSetColor(TFT_WHITE);
-        terminalPrintf("Touch %d,%d", p.x, p.y);
-        terminalResetColor();
-    }
+    // if (touch.touched())
+    // {
+    //     TS_Point p = touch.getPoint();
+    //     terminalSetColor(TFT_WHITE);
+    //     terminalPrintf("Touch %d,%d", p.x, p.y);
+    //     terminalResetColor();
+    // }
 
     g_cmd.poll();
 
