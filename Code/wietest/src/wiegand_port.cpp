@@ -5,6 +5,7 @@
 #include <cstdio>
 #include <hardware/gpio.h>
 #include "terminal.h"
+#include "wiegand_rx_log.h"
 
 WiegandPort::WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uint port_id,
                          uint tx_pin_d0, uint tx_pin_d1, uint led_pin)
@@ -32,9 +33,9 @@ WiegandPort::WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uin
 void WiegandPort::init(uint program_offset, float clk_div)
 {
     wiegand_rx2_program_init(pio_, sm_, program_offset, pin_base_d0_, clk_div);
-    pio_interrupt_clear(pio_, irq_index_);
+    // Enable IRQ when this SM's RX FIFO has data.
     pio_set_irq0_source_enabled(
-        pio_, static_cast<pio_interrupt_source_t>(pis_interrupt0 + irq_index_), true);
+        pio_, static_cast<pio_interrupt_source_t>(pis_sm0_rx_fifo_not_empty + sm_), true);
     pio_sm_set_enabled(pio_, sm_, true);
 
     pinMode(tx_pin_d0_, OUTPUT);
@@ -56,7 +57,6 @@ void WiegandPort::handle_irq()
         }
         // Otherwise drop and keep draining to prevent stalls.
     }
-    pio_interrupt_clear(pio_, irq_index_);
 }
 
 void WiegandPort::reset_buffer()
@@ -225,7 +225,6 @@ bool WiegandPort::process(uint32_t quiet_ms)
                   static_cast<unsigned long>((count_inter > 0) ? min_inter : 0),
                   static_cast<unsigned long>(avg_inter),
                   static_cast<unsigned long>((count_inter > 0) ? max_inter : 0));
-    Serial.println(summary);
 
     // Emit captured bits in hex.
     char hexline[2 * sizeof(bits) + 3]; // "0x" + 2 chars per byte + null
@@ -247,9 +246,38 @@ bool WiegandPort::process(uint32_t quiet_ms)
         }
     }
     hexline[pos] = '\0';
-    Serial.println(hexline);
+    // Choose display color per port.
+    uint16_t color = TFT_GREEN;
+    if (port_id_ == 1)
+    {
+        color = TFT_MAGENTA; // high contrast on black
+    }
+    else if (port_id_ == 2)
+    {
+        color = TFT_CYAN;
+    }
+    terminalSetColor(color);
     terminalAddLine(summary);
-    terminalAddLine(hexline);
+    terminalAddIndentedLine(hexline);
+    terminalResetColor();
+
+    // Stash the raw message and timing into the shared RX log buffer.
+    RxMessage msg{};
+    msg.port_id = port_id_;
+    msg.bit_count = bit_count;
+    msg.pulse_min = (count_low_any > 0) ? min_low_any : 0;
+    msg.pulse_avg = avg_any;
+    msg.pulse_max = (count_low_any > 0) ? max_low_any : 0;
+    msg.inter_min = (count_inter > 0) ? min_inter : 0;
+    msg.inter_avg = avg_inter;
+    msg.inter_max = (count_inter > 0) ? max_inter : 0;
+    msg.data_bytes = static_cast<uint8_t>(byte_len);
+    if (msg.data_bytes > sizeof(msg.data))
+    {
+        msg.data_bytes = sizeof(msg.data); // truncate defensively
+    }
+    std::memcpy(msg.data, bits, msg.data_bytes);
+    g_rx_log_buffer.push(msg);
 
     trigger_led();
     reset_buffer();
@@ -391,10 +419,22 @@ bool WiegandPort::transmit(const uint8_t *data, uint32_t bit_count, uint32_t bit
     }
     hexline[pos] = '\0';
 
+    // Use per-port color for TX logs on the terminal.
+    uint16_t color = TFT_GREEN;
+    if (port_id_ == 1)
+    {
+        color = TFT_MAGENTA; // high contrast on black
+    }
+    else if (port_id_ == 2)
+    {
+        color = TFT_CYAN;
+    }
+    terminalSetColor(color);
+    terminalAddLine(summary);
+    terminalAddIndentedLine(hexline);
+    terminalResetColor();
     Serial.println(summary);
     Serial.println(hexline);
-    terminalAddLine(summary);
-    terminalAddLine(hexline);
     trigger_led();
     return true;
 }

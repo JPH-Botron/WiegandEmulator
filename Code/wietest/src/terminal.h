@@ -8,7 +8,7 @@
 #endif
 
 #ifndef TERMINAL_MAX_CHARS
-#define TERMINAL_MAX_CHARS 64
+#define TERMINAL_MAX_CHARS 160
 #endif
 
 struct TerminalConfig
@@ -29,8 +29,17 @@ void terminalInit(const TerminalConfig &config);
 // Append a new line of text to the terminal window.
 void terminalAddLine(const char *message);
 
+// Append a new line with a fixed 4-space indent (applied to wrapped lines too).
+void terminalAddIndentedLine(const char *message);
+
 // Optional printf-style helper for formatted text.
 void terminalPrintf(const char *fmt, ...);
+
+// Set the text color for subsequent lines (foreground only).
+void terminalSetColor(uint16_t color);
+
+// Restore default terminal colors.
+void terminalResetColor();
 
 // Force a redraw of the terminal contents (e.g., after screen clear).
 void terminalRedraw();

@@ -27,8 +27,24 @@ public:
         return irq_index_;
     }
 
+    uint sm_index() const
+    {
+        return sm_;
+    }
+
+    uint rx_pin_d0() const
+    {
+        return pin_base_d0_;
+    }
+
+    uint rx_pin_d1() const
+    {
+        return pin_base_d0_ + 1;
+    }
+
 private:
-    static constexpr uint32_t kBufferCapacity = 256;
+    // Edge records per message: two edges per bit (fall+rise). Support up to 512 bits.
+    static constexpr uint32_t kBufferCapacity = 1024;
     static constexpr uint32_t kTxBufferBytes = 32;  // 256 bits max
 
     enum class TxState { Idle, Pulse, InterBit };

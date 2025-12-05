@@ -10,13 +10,17 @@ really are not all that interchangable.
 	o  Leave GPIO28 unconnected.  (MISO not used)
 	
 2.  Pins for RXD0 and RXD1 must be adjacent, and D0 must be a lower GPIO number than D1.
-This is due to the way the PIO state machines work.
+	This is due to the way the PIO state machines work.
+    The schematic also mistakenly swaps DB0_RX and DB1_RX on the first page (the high-level 
+	hierachical connections)
+	
     o  For Wiegand A:  Cut wires on GPIO2 and GPIO3
 	o  Connect GPIO2 to DA0_RX
 	o  Connect GPIO3 to DA1_RX
 	
-	o  For Wiegand B:  Cut wires on GPIO7 and GPIO8
-	o  Connect GPIO7 to DB1_RX
+	o  For Wiegand B:  Cut wires on GPIO6, GPIO7 and GPIO8
+	o  Connect GPIO6 to DB1_RX (actually DB0 on outgoing connector)
+	o  Connect GPIO7 to DB0_RX (actually DB1 on outgoing connector)
 	o  Connect GPIO8 to /DB1_TX
 	
 	o  Wiegand C is OK as is.
