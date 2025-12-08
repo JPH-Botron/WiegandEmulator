@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <cstring>
 
+#include "bit_utils.h"
 #include "firmware_version.h"
 #include "terminal.h"
 #include "wiegand_rx_log.h"
@@ -108,14 +109,11 @@ bool cmd_getrx(int argc, char *argv[])
         Serial.print("\",\"bits\":"); Serial.print(m.bit_count);
         Serial.print(",\"pulse\":["); Serial.print(m.pulse_min); Serial.print(","); Serial.print(m.pulse_avg); Serial.print(","); Serial.print(m.pulse_max);
         Serial.print("],\"gap\":["); Serial.print(m.inter_min); Serial.print(","); Serial.print(m.inter_avg); Serial.print(","); Serial.print(m.inter_max);
-        Serial.print("],\"data\":\"0x");
-        for (uint8_t b = 0; b < m.data_bytes; ++b)
+        Serial.print("],\"data\":\"");
+        char hexline[2 * sizeof(m.data) + 3] = {};
+        if (bitutils_format_hex_msb(m.data, m.bit_count, hexline, sizeof(hexline)))
         {
-            const uint8_t byte = m.data[b];
-            const uint8_t hi = (byte >> 4) & 0xF;
-            const uint8_t lo = byte & 0xF;
-            Serial.print(static_cast<char>(hi < 10 ? '0' + hi : 'a' + (hi - 10)));
-            Serial.print(static_cast<char>(lo < 10 ? '0' + lo : 'a' + (lo - 10)));
+            Serial.print(hexline);
         }
         Serial.print("\"}");
     }
@@ -138,12 +136,25 @@ bool cmd_tx(int argc, char *argv[])
     std::memset(tx_buf, 0, sizeof(tx_buf)); // pad remaining bits with zeros
     size_t tx_len = 0;
     if (!parse_hex_string(argv[2], tx_buf, kMaxTxBytes, tx_len)) { Serial.println("ERR bad hex"); return false; }
+    if (tx_len == 0) { Serial.println("ERR bad hex"); return false; }
 
     uint32_t bit_count = 26;
     if (argc >= 4)
     {
         bit_count = static_cast<uint32_t>(std::strtoul(argv[3], nullptr, 10));
         if (bit_count == 0) { Serial.println("ERR bad bits"); return false; }
+    }
+    if (bit_count > 256)
+    {
+        Serial.println("ERR too many bits (max 256)");
+        return false;
+    }
+
+    const uint32_t available_bits = static_cast<uint32_t>(tx_len * 8);
+    if (bit_count > available_bits)
+    {
+        Serial.println("ERR not enough hex digits for requested bits");
+        return false;
     }
 
     uint32_t bit_time_us = 100;
@@ -157,7 +168,7 @@ bool cmd_tx(int argc, char *argv[])
         if (interbit_us == 0) interbit_us = 1;
     }
 
-    if (!g_ports[port_index].transmit(tx_buf, bit_count, bit_time_us, interbit_us))
+    if (!g_ports[port_index].transmit(tx_buf, tx_len, bit_count, bit_time_us, interbit_us))
     {
         Serial.println("ERR transmit failed");
         return false;

@@ -19,7 +19,7 @@ public:
     bool message_ready(uint32_t quiet_ms) const;
     bool process(uint32_t quiet_ms);
     void tick();
-    bool transmit(const uint8_t *data, uint32_t bit_count, uint32_t bit_time_us,
+    bool transmit(const uint8_t *data, size_t data_bytes, uint32_t bit_count, uint32_t bit_time_us,
                   uint32_t interbit_time_us);
 
     uint irq_index() const
@@ -46,6 +46,7 @@ private:
     // Edge records per message: two edges per bit (fall+rise). Support up to 512 bits.
     static constexpr uint32_t kBufferCapacity = 1024;
     static constexpr uint32_t kTxBufferBytes = 32;  // 256 bits max
+    static constexpr uint32_t kMaxBits = kTxBufferBytes * 8;
 
     enum class TxState { Idle, Pulse, InterBit };
 
@@ -72,6 +73,7 @@ private:
     volatile bool tx_active_;
     TxState tx_state_;
     uint32_t tx_bits_;
+    uint32_t tx_bytes_;
     uint32_t tx_bit_index_;
     uint32_t tx_bit_time_us_;
     uint32_t tx_interbit_time_us_;

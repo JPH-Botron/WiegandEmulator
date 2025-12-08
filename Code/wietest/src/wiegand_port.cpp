@@ -4,8 +4,50 @@
 #include <climits>
 #include <cstdio>
 #include <hardware/gpio.h>
+#include "bit_utils.h"
 #include "terminal.h"
 #include "wiegand_rx_log.h"
+
+namespace {
+
+// Copy a right-aligned bitstream from src into dst, keeping MSB-first ordering.
+// bit_count bits (up to dst_len * 8) are taken from the least-significant bits
+// of src (using data_bytes to determine width).
+bool copy_right_aligned_bits(const uint8_t *src, size_t data_bytes, uint32_t bit_count,
+                             uint8_t *dst, size_t dst_len)
+{
+    if (!src || !dst || bit_count == 0)
+    {
+        return false;
+    }
+    const uint32_t needed_bytes = (bit_count + 7) / 8;
+    if (needed_bytes > dst_len)
+    {
+        return false;
+    }
+    const uint32_t dst_bits = needed_bytes * 8;
+    const uint32_t available_bits = static_cast<uint32_t>(data_bytes * 8);
+    if (bit_count > available_bits)
+    {
+        return false;
+    }
+
+    std::memset(dst, 0, needed_bytes);
+    const uint32_t dst_offset = dst_bits - bit_count;
+    const uint32_t src_offset = available_bits - bit_count;
+    for (uint32_t i = 0; i < bit_count; ++i)
+    {
+        const uint32_t src_bit_index = src_offset + i;
+        const uint32_t dst_bit_index = dst_offset + i;
+        if (bitutils_read_bit_msb(src, src_bit_index))
+        {
+            bitutils_set_bit_msb(dst, dst_bit_index);
+        }
+    }
+    return true;
+}
+
+} // namespace
 
 WiegandPort::WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uint port_id,
                          uint tx_pin_d0, uint tx_pin_d1, uint led_pin)
@@ -24,6 +66,7 @@ WiegandPort::WiegandPort(PIO pio, uint sm, uint irq_index, uint pin_base_d0, uin
       tx_active_(false),
       tx_state_(TxState::Idle),
       tx_bits_(0),
+      tx_bytes_(0),
       tx_bit_index_(0),
       tx_bit_time_us_(0),
       tx_interbit_time_us_(0),
@@ -105,7 +148,6 @@ bool WiegandPort::process(uint32_t quiet_ms)
         local_count = kBufferCapacity;
     }
 
-    uint32_t prev_ts = 0;
     uint32_t prev_levels = 0x3; // assume idle high on both lines
     uint32_t last_fall_ts[2] = {0, 0};
     bool in_low[2] = {false, false};
@@ -124,7 +166,7 @@ bool WiegandPort::process(uint32_t quiet_ms)
     uint32_t last_rise_ts_any = 0;
     bool have_last_rise = false;
     const uint32_t wrap = (1u << 30);
-    uint8_t bits[64] = {0}; // up to 512 bits
+    uint8_t bit_stream[kMaxBits] = {0}; // raw bits as seen, MSB-first
     uint32_t bit_count = 0;
 
     for (uint32_t i = 0; i < local_count; ++i)
@@ -132,9 +174,6 @@ bool WiegandPort::process(uint32_t quiet_ms)
         const uint32_t word = buffer_[i];
         const uint32_t ts = word >> 2;
         const uint32_t levels = word & 0x3;
-        const uint32_t d0 = levels & 0x1;
-        const uint32_t d1 = (levels >> 1) & 0x1;
-        prev_ts = ts;
 
         // Track low pulse durations per line.
         for (int line = 0; line < 2; ++line)
@@ -193,14 +232,11 @@ bool WiegandPort::process(uint32_t quiet_ms)
                 in_low[line] = false;
 
                 // Record bit: D0 pulse -> 0, D1 pulse -> 1
-                if (bit_count < 512)
+                if (bit_count < kMaxBits)
                 {
-                    if (line == 1)
-                    {
-                        bits[bit_count >> 3] |= static_cast<uint8_t>(1u << (bit_count & 7));
-                    }
-                    bit_count++;
+                    bit_stream[bit_count] = (line == 1) ? 1 : 0;
                 }
+                bit_count++;
                 last_rise_ts_any = ts;
                 have_last_rise = true;
             }
@@ -215,10 +251,27 @@ bool WiegandPort::process(uint32_t quiet_ms)
                                    ? static_cast<uint32_t>(sum_inter / count_inter)
                                    : 0;
 
+    const uint32_t captured_bits = (bit_count > kMaxBits) ? kMaxBits : bit_count;
+    const bool truncated = (bit_count > kMaxBits);
+    const uint32_t byte_len = (captured_bits + 7) / 8;
+    uint8_t packed[kTxBufferBytes] = {0};
+    if (captured_bits > 0 && byte_len <= kTxBufferBytes)
+    {
+        const uint32_t total_bits = byte_len * 8;
+        const uint32_t offset = total_bits - captured_bits;
+        for (uint32_t i = 0; i < captured_bits; ++i)
+        {
+            if (bit_stream[i])
+            {
+                bitutils_set_bit_msb(packed, offset + i);
+            }
+        }
+    }
+
     const char port_letter = static_cast<char>('A' + port_id_);
     char summary[96];
-    std::snprintf(summary, sizeof(summary), "rx %c %lub %lu/%lu/%lu %lu/%lu/%lu", port_letter,
-                  static_cast<unsigned long>(bit_count),
+    std::snprintf(summary, sizeof(summary), "rx %c %lub%s %lu/%lu/%lu %lu/%lu/%lu", port_letter,
+                  static_cast<unsigned long>(captured_bits), truncated ? "+" : "",
                   static_cast<unsigned long>((count_low_any > 0) ? min_low_any : 0),
                   static_cast<unsigned long>(avg_any),
                   static_cast<unsigned long>((count_low_any > 0) ? max_low_any : 0),
@@ -227,25 +280,11 @@ bool WiegandPort::process(uint32_t quiet_ms)
                   static_cast<unsigned long>((count_inter > 0) ? max_inter : 0));
 
     // Emit captured bits in hex.
-    char hexline[2 * sizeof(bits) + 3]; // "0x" + 2 chars per byte + null
-    size_t pos = 0;
-    hexline[pos++] = '0';
-    hexline[pos++] = 'x';
-    const uint32_t byte_len = (bit_count + 7) / 8;
-    auto hexchar = [](uint8_t nib) -> char
+    char hexline[2 * kTxBufferBytes + 3]; // "0x" + 2 chars per byte + null
+    if (!bitutils_format_hex_msb(packed, captured_bits, hexline, sizeof(hexline)))
     {
-        return (nib < 10) ? static_cast<char>('0' + nib) : static_cast<char>('a' + (nib - 10));
-    };
-    for (uint32_t i = 0; i < byte_len; ++i)
-    {
-        const uint8_t b = bits[i];
-        if (pos + 2 < sizeof(hexline))
-        {
-            hexline[pos++] = hexchar((b >> 4) & 0xF);
-            hexline[pos++] = hexchar(b & 0xF);
-        }
+        std::snprintf(hexline, sizeof(hexline), "0x");
     }
-    hexline[pos] = '\0';
     // Choose display color per port.
     uint16_t color = TFT_GREEN;
     if (port_id_ == 1)
@@ -264,7 +303,7 @@ bool WiegandPort::process(uint32_t quiet_ms)
     // Stash the raw message and timing into the shared RX log buffer.
     RxMessage msg{};
     msg.port_id = port_id_;
-    msg.bit_count = bit_count;
+    msg.bit_count = captured_bits;
     msg.pulse_min = (count_low_any > 0) ? min_low_any : 0;
     msg.pulse_avg = avg_any;
     msg.pulse_max = (count_low_any > 0) ? max_low_any : 0;
@@ -276,7 +315,7 @@ bool WiegandPort::process(uint32_t quiet_ms)
     {
         msg.data_bytes = sizeof(msg.data); // truncate defensively
     }
-    std::memcpy(msg.data, bits, msg.data_bytes);
+    std::memcpy(msg.data, packed, msg.data_bytes);
     g_rx_log_buffer.push(msg);
 
     trigger_led();
@@ -315,10 +354,9 @@ bool WiegandPort::handle_tx_timer()
     }
     case TxState::InterBit:
     {
-        const uint32_t byte_idx = tx_bit_index_ >> 3;
-        const uint32_t bit_idx = tx_bit_index_ & 7;
-        const uint8_t byte = tx_buffer_[byte_idx];
-        const bool bit_is_one = (byte >> bit_idx) & 0x1;
+        const uint32_t bit_offset = (tx_bytes_ * 8) - tx_bits_;
+        const uint32_t bit_index = bit_offset + tx_bit_index_;
+        const bool bit_is_one = bitutils_read_bit_msb(tx_buffer_, bit_index);
         drive_bit(bit_is_one);
         tx_state_ = TxState::Pulse;
         tx_timer_.delay_us = tx_bit_time_us_;
@@ -353,10 +391,14 @@ void WiegandPort::drive_bit(bool bit_is_one)
     }
 }
 
-bool WiegandPort::transmit(const uint8_t *data, uint32_t bit_count, uint32_t bit_time_us,
-                           uint32_t interbit_time_us)
+bool WiegandPort::transmit(const uint8_t *data, size_t data_bytes, uint32_t bit_count,
+                           uint32_t bit_time_us, uint32_t interbit_time_us)
 {
-    if (!data || bit_count == 0 || bit_count > kTxBufferBytes * 8)
+    if (!data || bit_count == 0 || bit_count > kMaxBits)
+    {
+        return false;
+    }
+    if (data_bytes == 0)
     {
         return false;
     }
@@ -365,20 +407,22 @@ bool WiegandPort::transmit(const uint8_t *data, uint32_t bit_count, uint32_t bit
         return false;  // busy
     }
 
-    // Copy payload (little-endian bit order: LSB of first byte first).
     memset(tx_buffer_, 0, sizeof(tx_buffer_));
-    const uint32_t byte_count = (bit_count + 7) / 8;
-    memcpy(tx_buffer_, data, byte_count);
+    if (!copy_right_aligned_bits(data, data_bytes, bit_count, tx_buffer_, sizeof(tx_buffer_)))
+    {
+        return false;
+    }
 
     tx_bits_ = bit_count;
+    tx_bytes_ = (bit_count + 7) / 8;
     tx_bit_index_ = 0;
     tx_bit_time_us_ = bit_time_us;
     tx_interbit_time_us_ = interbit_time_us;
     tx_state_ = TxState::Pulse;
     tx_active_ = true;
 
-    const uint8_t first_byte = tx_buffer_[0];
-    const bool first_bit_is_one = first_byte & 0x1;
+    const uint32_t first_bit_index = (tx_bytes_ * 8) - tx_bits_;
+    const bool first_bit_is_one = bitutils_read_bit_msb(tx_buffer_, first_bit_index);
     drive_bit(first_bit_is_one);
 
     if (!add_repeating_timer_us(tx_bit_time_us_, tx_timer_trampoline, this, &tx_timer_))
@@ -396,28 +440,11 @@ bool WiegandPort::transmit(const uint8_t *data, uint32_t bit_count, uint32_t bit
                   static_cast<unsigned long>(tx_bit_time_us_),
                   static_cast<unsigned long>(tx_interbit_time_us_));
 
-    const uint32_t byte_len = (bit_count + 7) / 8;
-    const uint32_t tail_bits = bit_count & 7;
     char hexline[2 * kTxBufferBytes + 3]; // "0x" + 2 chars per byte + null
-    size_t pos = 0;
-    hexline[pos++] = '0';
-    hexline[pos++] = 'x';
-    auto hexchar = [](uint8_t nib) -> char
+    if (!bitutils_format_hex_msb(tx_buffer_, bit_count, hexline, sizeof(hexline)))
     {
-        return (nib < 10) ? static_cast<char>('0' + nib) : static_cast<char>('a' + (nib - 10));
-    };
-    for (uint32_t i = 0; i < byte_len && pos + 2 < sizeof(hexline); ++i)
-    {
-        uint8_t b = tx_buffer_[i];
-        if (i == byte_len - 1 && tail_bits != 0)
-        {
-            const uint8_t mask = static_cast<uint8_t>((1u << tail_bits) - 1u);
-            b &= mask;
-        }
-        hexline[pos++] = hexchar((b >> 4) & 0xF);
-        hexline[pos++] = hexchar(b & 0xF);
+        std::snprintf(hexline, sizeof(hexline), "0x");
     }
-    hexline[pos] = '\0';
 
     // Use per-port color for TX logs on the terminal.
     uint16_t color = TFT_GREEN;

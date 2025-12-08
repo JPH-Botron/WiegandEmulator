@@ -20,7 +20,7 @@ struct RxMessage
     uint32_t inter_max;
 
     uint8_t data_bytes;    // length of data[] in bytes
-    uint8_t data[64];      // up to 512 bits little-endian
+    uint8_t data[32];      // up to 256 bits, MSB-first, right-aligned
 };
 
 // Fixed-size ring buffer for recent RX messages shared across ports.
