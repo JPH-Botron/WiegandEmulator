@@ -5,8 +5,8 @@
 	(uuid "0aeccc43-ea71-43b6-bfe2-e1aae0f9728d")
 	(paper "A4")
 	(title_block
-		(date "2025-11-10")
-		(rev "A")
+		(date "2025-12-19")
+		(rev "B")
 		(comment 1 "JPH")
 	)
 	(lib_symbols
@@ -1469,7 +1469,7 @@
 			)
 			(uuid "eefe848a-64c6-44f9-8fbc-949f490706d1")
 		)
-		(pin "DB1_RX" input
+		(pin "DB0_RX" input
 			(at 109.22 73.66 0)
 			(effects
 				(font
@@ -1479,7 +1479,7 @@
 			)
 			(uuid "df576e0d-ad86-474e-aba1-b3a6856e9e52")
 		)
-		(pin "DB0_RX" input
+		(pin "DB1_RX" input
 			(at 109.22 76.2 0)
 			(effects
 				(font

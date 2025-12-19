@@ -6,8 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "CPU")
-		(date "2025-11-10")
-		(rev "A")
+		(date "2025-12-19")
+		(rev "B")
 		(comment 1 "JPH")
 	)
 	(lib_symbols
@@ -2406,6 +2406,10 @@
 		(uuid "2519f9af-31de-45c6-8eb3-0b8eda27b8af")
 	)
 	(no_connect
+		(at 129.54 72.39)
+		(uuid "34fb8606-46db-4b25-9093-9da1c6dd3925")
+	)
+	(no_connect
 		(at 129.54 82.55)
 		(uuid "680363eb-f9c2-44de-880b-7e799e187152")
 	)
@@ -2969,16 +2973,6 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 72.39) (xy 134.62 72.39)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d0824350-5af1-4f01-9bc2-05aeee10220e")
-	)
-	(wire
-		(pts
 			(xy 129.54 85.09) (xy 134.62 85.09)
 		)
 		(stroke
@@ -3354,7 +3348,7 @@
 	)
 	(global_label "LCD_MOSI"
 		(shape output)
-		(at 134.62 77.47 0)
+		(at 134.62 95.25 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3365,7 +3359,7 @@
 		)
 		(uuid "0388ffe6-f88f-49f3-811c-c2d2852ef583")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 146.7371 77.47 0)
+			(at 146.7371 95.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3444,29 +3438,6 @@
 			)
 		)
 	)
-	(global_label "LCD_MISO"
-		(shape input)
-		(at 134.62 72.39 0)
-		(fields_autoplaced yes)
-		(effects
-			(font
-				(size 1.27 1.27)
-				(thickness 0.1588)
-			)
-			(justify left)
-		)
-		(uuid "3aebe4a0-88e3-438f-917c-f5dfd301072a")
-		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 146.7371 72.39 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-				(hide yes)
-			)
-		)
-	)
 	(global_label "SDA0"
 		(shape bidirectional)
 		(at 229.87 71.12 180)
@@ -3538,7 +3509,7 @@
 	)
 	(global_label "CTP_INT"
 		(shape input)
-		(at 134.62 95.25 0)
+		(at 134.62 77.47 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3549,7 +3520,7 @@
 		)
 		(uuid "66bf69e5-9079-4fbc-912c-1c0d26909ea0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 144.9833 95.25 0)
+			(at 144.9833 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3722,7 +3693,7 @@
 	)
 	(global_label "LCD_SCK"
 		(shape output)
-		(at 134.62 80.01 0)
+		(at 134.62 97.79 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3733,7 +3704,7 @@
 		)
 		(uuid "cb53f2b7-2f02-4584-a6b1-ddbee37a19e0")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 145.8904 80.01 0)
+			(at 145.8904 97.79 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3768,7 +3739,7 @@
 	)
 	(global_label "SD_CS"
 		(shape output)
-		(at 134.62 97.79 0)
+		(at 134.62 80.01 0)
 		(fields_autoplaced yes)
 		(effects
 			(font
@@ -3779,7 +3750,7 @@
 		)
 		(uuid "f8d1eebf-0709-4d79-bf62-a48be565166d")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 143.5318 97.79 0)
+			(at 143.5318 80.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3791,7 +3762,7 @@
 	)
 	(hierarchical_label "DB1_RX"
 		(shape input)
-		(at 77.47 82.55 180)
+		(at 77.47 80.01 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3830,7 +3801,7 @@
 	)
 	(hierarchical_label "{slash}DB1_TX"
 		(shape output)
-		(at 77.47 80.01 180)
+		(at 77.47 82.55 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3880,7 +3851,7 @@
 	)
 	(hierarchical_label "DA1_RX"
 		(shape input)
-		(at 77.47 64.77 180)
+		(at 77.47 67.31 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -3917,7 +3888,7 @@
 	)
 	(hierarchical_label "DA0_RX"
 		(shape input)
-		(at 77.47 67.31 180)
+		(at 77.47 64.77 180)
 		(effects
 			(font
 				(size 1.27 1.27)
