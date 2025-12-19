@@ -16,6 +16,7 @@ size_t g_lineCount = 0;
 
 uint16_t g_lineHeight = 0;
 uint16_t g_currentColor = TFT_GREEN;
+bool g_render_enabled = true;
 
 uint16_t computeLineHeight(TFT_eSPI &display, uint8_t textSize)
 {
@@ -41,7 +42,7 @@ uint16_t computeCharWidth(TFT_eSPI &display, uint8_t textSize)
 
 void render()
 {
-    if (!g_initialized || g_config.display == nullptr)
+    if (!g_initialized || g_config.display == nullptr || !g_render_enabled)
     {
         return;
     }
@@ -104,6 +105,7 @@ void terminalInit(const TerminalConfig &config)
     g_lineCount = 0;
     g_lineHeight = 0;
     g_currentColor = config.foreground;
+    g_render_enabled = true;
     std::memset(g_lines, 0, sizeof(g_lines));
     std::memset(g_colors, 0, sizeof(g_colors));
 
@@ -281,7 +283,7 @@ void terminalRedraw()
 
 void terminalClear()
 {
-    if (!g_initialized || g_config.display == nullptr)
+    if (!g_initialized || g_config.display == nullptr || !g_render_enabled)
     {
         return;
     }
@@ -292,4 +294,13 @@ void terminalClear()
 
     g_config.display->fillRect(g_config.x, g_config.y, g_config.width, g_config.height,
                                g_config.background);
+}
+
+void terminalSetRenderingEnabled(bool enabled)
+{
+    g_render_enabled = enabled;
+    if (enabled)
+    {
+        render();
+    }
 }

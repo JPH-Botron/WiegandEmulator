@@ -4,6 +4,7 @@
 #include <cstring>
 
 #include "bit_utils.h"
+#include "display_modes.h"
 #include "firmware_version.h"
 #include "terminal.h"
 #include "wiegand_rx_log.h"
@@ -71,6 +72,10 @@ bool cmd_help(int argc, char *argv[])
     Serial.println("  pins <a|b|c>");
     Serial.println("  getrx");
     Serial.println("  tx <a|b|c> <hexdata> [bits] [bit_us] [inter_us]");
+    Serial.println("  qrcode <text>");
+    Serial.println("  barcode <text>");
+    Serial.println("  terminal");
+    Serial.println("  clear");
     return true;
 }
 
@@ -177,6 +182,70 @@ bool cmd_tx(int argc, char *argv[])
     return true;
 }
 
+bool cmd_qrcode(int argc, char *argv[])
+{
+    if (argc < 2) { Serial.println("ERR usage: qrcode <text>"); return false; }
+    constexpr size_t kMaxQrLen = 200;
+    const size_t len = std::strlen(argv[1]);
+    if (len == 0 || len > kMaxQrLen)
+    {
+        Serial.println("ERR text length");
+        return false;
+    }
+    if (!display_show_qrcode(argv[1]))
+    {
+        Serial.println("ERR render fail");
+        return false;
+    }
+    Serial.println("OK");
+    return true;
+}
+
+bool cmd_barcode(int argc, char *argv[])
+{
+    if (argc < 2) { Serial.println("ERR usage: barcode <text>"); return false; }
+    constexpr size_t kMaxBarcodeLen = 48;
+    const size_t len = std::strlen(argv[1]);
+    if (len == 0 || len > kMaxBarcodeLen)
+    {
+        Serial.println("ERR text length");
+        return false;
+    }
+    // Validate printable ASCII (Code128 set B).
+    for (size_t i = 0; i < len; ++i)
+    {
+        const unsigned char c = static_cast<unsigned char>(argv[1][i]);
+        if (c < 32 || c > 126)
+        {
+            Serial.println("ERR invalid chars (use printable ASCII)");
+            return false;
+        }
+    }
+    if (!display_show_barcode128(argv[1]))
+    {
+        Serial.println("ERR render fail");
+        return false;
+    }
+    Serial.println("OK");
+    return true;
+}
+
+bool cmd_terminal(int argc, char *argv[])
+{
+    (void)argc; (void)argv;
+    display_show_terminal();
+    Serial.println("OK");
+    return true;
+}
+
+bool cmd_clear(int argc, char *argv[])
+{
+    (void)argc; (void)argv;
+    display_clear_black();
+    Serial.println("OK");
+    return true;
+}
+
 SerialCommand kCommands[] = {
     {"ping",  cmd_ping},
     {"ver",   cmd_ver},
@@ -184,6 +253,10 @@ SerialCommand kCommands[] = {
     {"pins",  cmd_pins},
     {"getrx", cmd_getrx},
     {"tx",    cmd_tx},
+    {"qrcode", cmd_qrcode},
+    {"barcode", cmd_barcode},
+    {"terminal", cmd_terminal},
+    {"clear", cmd_clear},
 };
 
 } // namespace

@@ -102,12 +102,6 @@ bool SerialCommandProcessor::dispatch(char *line)
         return false;
     }
 
-    // Lowercase the line in place to make command/args case-insensitive.
-    for (char *p = line; *p; ++p)
-    {
-        *p = static_cast<char>(std::tolower(static_cast<unsigned char>(*p)));
-    }
-
     // Tokenize in place (command + args).
     char *argv[kMaxArgs];
     int argc = 0;
@@ -122,6 +116,15 @@ bool SerialCommandProcessor::dispatch(char *line)
         return false;
     }
 
+    // Lowercase only the command token for comparison; leave args untouched.
+    char cmd_lower[kMaxLineLength];
+    std::strncpy(cmd_lower, argv[0], sizeof(cmd_lower) - 1);
+    cmd_lower[sizeof(cmd_lower) - 1] = '\0';
+    for (char *p = cmd_lower; *p; ++p)
+    {
+        *p = static_cast<char>(std::tolower(static_cast<unsigned char>(*p)));
+    }
+
     for (size_t i = 0; i < command_count_; ++i)
     {
         const SerialCommand &cmd = commands_[i];
@@ -129,7 +132,7 @@ bool SerialCommandProcessor::dispatch(char *line)
         {
             continue;
         }
-        if (std::strcmp(cmd.name, argv[0]) == 0)
+        if (std::strcmp(cmd.name, cmd_lower) == 0)
         {
             return cmd.handler(argc, argv);
         }

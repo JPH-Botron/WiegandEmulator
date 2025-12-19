@@ -46,3 +46,6 @@ void terminalRedraw();
 
 // Clear the terminal buffer and the on-screen region.
 void terminalClear();
+
+// Enable/disable on-screen rendering; buffer continues to collect lines.
+void terminalSetRenderingEnabled(bool enabled);

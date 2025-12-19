@@ -9,6 +9,7 @@
 
 #include <Adafruit_FT6206.h>
 #include "commands.h"
+#include "display_modes.h"
 #include "terminal.h"
 #include "serial_commands.h"
 #include "firmware_version.h"
@@ -83,6 +84,7 @@ void setup()
     tft.println(">1 26b 72/100/110  800/1000/1200");
     tft.println("   0x0123456789012345");
 
+    display_modes_init(&tft);
     TerminalConfig terminalConfig;
     terminalConfig.display = &tft;
     terminalConfig.x = 0;
