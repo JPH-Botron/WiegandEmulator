@@ -473,6 +473,27 @@
 		)
 		(uuid "a7312a36-9c99-440d-9739-819a124b3697")
 	)
+	(text "Revision B  12/21/2025 "
+		(exclude_from_sim no)
+		(at 209.55 26.67 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "d8dd3d57-6da6-4a07-9b96-160edc10ef54")
+	)
+	(text "Fixed multiple issues where pins could not \nbe used for the functions they were assigned."
+		(exclude_from_sim no)
+		(at 234.188 27.432 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e7b47274-7948-45f8-85fd-b8fee3964513")
+	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
 		(at 76.2 163.83 0)
