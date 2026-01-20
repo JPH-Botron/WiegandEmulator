@@ -60,14 +60,10 @@
       ],
       "drc_exclusions": [
         "silk_edge_clearance|107866500|52070000|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|3f989923-8fb6-45db-92fc-846bcafaead0",
-        "silk_edge_clearance|113182400|133297600|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|86a185bc-0e81-4157-ac8d-b4dc35a4d3ba",
-        "silk_edge_clearance|116189400|133297600|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|0d7b1ad0-a506-4bf5-80d2-9371edc031b0",
-        "silk_edge_clearance|116189400|133297600|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|905c3cf7-78a2-4525-96e0-6fefb11f0594",
         "silk_edge_clearance|131203700|52070000|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|56d36ae8-5071-42ac-af75-7d387aa948e3",
         "silk_edge_clearance|143370300|52070000|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|04af1542-4841-40d5-8968-3794e22fc773",
         "silk_edge_clearance|166667500|52070000|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|0d310a33-062c-4799-87cb-3acf358c69b2",
         "silk_edge_clearance|178834100|52070000|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|5d7c3c40-31ef-445d-bd2e-d54c294e914c",
-        "silk_edge_clearance|95189400|133297600|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|bd09d9bd-bd3f-42d2-a2f4-4351b9d07996",
         "silk_edge_clearance|95699900|52070000|cc7fb44b-5159-4dc2-8810-f5fe4c9af62d|821b8a4e-c129-4123-8855-76d3325a846e"
       ],
       "meta": {
@@ -127,7 +123,7 @@
       },
       "rules": {
         "max_error": 0.005,
-        "min_clearance": 0.0,
+        "min_clearance": 0.2032,
         "min_connection": 0.0,
         "min_copper_edge_clearance": 0.5,
         "min_hole_clearance": 0.25,
@@ -135,11 +131,11 @@
         "min_microvia_diameter": 0.2,
         "min_microvia_drill": 0.1,
         "min_resolved_spokes": 2,
-        "min_silk_clearance": 0.0,
+        "min_silk_clearance": 0.127,
         "min_text_height": 0.8,
         "min_text_thickness": 0.08,
         "min_through_hole_diameter": 0.3,
-        "min_track_width": 0.0,
+        "min_track_width": 0.2032,
         "min_via_annular_width": 0.1,
         "min_via_diameter": 0.5,
         "solder_mask_to_copper_clearance": 0.0,
