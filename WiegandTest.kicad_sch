@@ -5,8 +5,8 @@
 	(uuid "0aeccc43-ea71-43b6-bfe2-e1aae0f9728d")
 	(paper "A4")
 	(title_block
-		(date "2025-12-19")
-		(rev "B")
+		(date "2026-03-23")
+		(rev "C")
 		(comment 1 "JPH")
 	)
 	(lib_symbols
@@ -441,6 +441,17 @@
 		)
 		(uuid "f6f0fbea-a830-4a9c-9349-83377f991507")
 	)
+	(text "Made PCA smaller to fit test systems\nbetter, but LCD does not fit on board."
+		(exclude_from_sim no)
+		(at 233.934 33.782 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "405d8d7e-88ae-4799-b491-fc3592c60ea4")
+	)
 	(text "Revision A  11/3/2025               Initial Revision"
 		(exclude_from_sim no)
 		(at 222.758 23.368 0)
@@ -450,6 +461,16 @@
 			)
 		)
 		(uuid "41acdb24-7f6e-4f3d-8e55-b7854e247703")
+	)
+	(text "Revision C  3/23/26 "
+		(exclude_from_sim no)
+		(at 207.772 33.274 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "6c78844b-d2c9-44d1-87fa-688ba27a11b9")
 	)
 	(text "Revision History"
 		(exclude_from_sim no)
@@ -493,152 +514,6 @@
 			(justify left)
 		)
 		(uuid "e7b47274-7948-45f8-85fd-b8fee3964513")
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 76.2 163.83 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "126bad66-aa1b-4e4e-9b85-509aa7f0c518")
-		(property "Reference" "H5"
-			(at 78.74 162.5599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 78.74 165.0999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 76.2 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 76.2 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 76.2 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB Part Number" ""
-			(at 76.2 163.83 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "WiegandTest"
-				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
-					(reference "H5")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 76.2 186.69 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "13dacf99-2097-4bf3-8722-edb4cb6f2ed9")
-		(property "Reference" "H8"
-			(at 78.74 185.4199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 78.74 187.9599 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 76.2 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 76.2 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 76.2 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB Part Number" ""
-			(at 76.2 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "WiegandTest"
-				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
-					(reference "H8")
-					(unit 1)
-				)
-			)
-		)
 	)
 	(symbol
 		(lib_id "Mechanical:MountingHole")
@@ -1150,79 +1025,6 @@
 		)
 	)
 	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 76.2 171.45 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "d158cd1f-d30c-485f-ace5-9434fd239eba")
-		(property "Reference" "H6"
-			(at 78.74 170.1799 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 78.74 172.7199 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 76.2 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 76.2 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 76.2 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB Part Number" ""
-			(at 76.2 171.45 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "WiegandTest"
-				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
-					(reference "H6")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "power:GND")
 		(at 110.49 165.1 0)
 		(unit 1)
@@ -1282,79 +1084,6 @@
 			(project "WiegandTest"
 				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
 					(reference "#PWR053")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "Mechanical:MountingHole")
-		(at 76.2 179.07 0)
-		(unit 1)
-		(exclude_from_sim yes)
-		(in_bom no)
-		(on_board yes)
-		(dnp yes)
-		(fields_autoplaced yes)
-		(uuid "f52ac4fd-294e-4b39-b1f0-f545bbd9b91f")
-		(property "Reference" "H7"
-			(at 78.74 177.7999 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "MountingHole"
-			(at 78.74 180.3399 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "MountingHole:MountingHole_2.5mm"
-			(at 76.2 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "~"
-			(at 76.2 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Mounting Hole without connection"
-			(at 76.2 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "JLCPCB Part Number" ""
-			(at 76.2 179.07 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(instances
-			(project "WiegandTest"
-				(path "/0aeccc43-ea71-43b6-bfe2-e1aae0f9728d"
-					(reference "H7")
 					(unit 1)
 				)
 			)
